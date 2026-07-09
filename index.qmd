@@ -11,16 +11,19 @@ toc: false
 ```
 
 ::: {.hero-body}
-# Douglas A. Parry
+# Dr. Douglas A. Parry
 
 ::: {.hero-role}
-Assistant Professor, Communication Science · VU Amsterdam
+Assistant Professor of Media Psychology, Vrije Universiteit Amsterdam, the Netherlands
+:::
+
+::: {.hero-affil}
+External Associate Research Fellow, Department of Information Science, Stellenbosch University, South Africa<br>
+External Associate Researcher, Methods Lab, Weizenbaum Institute for the Networked Society, Germany
 :::
 
 I study how adolescents and young adults use digital media, and what that means
-for their cognition, mental health, and well-being. I'm part of the
-[Media Psychology Group](https://mediapsychology.nl/) in the Department of
-Communication Science at the Vrije Universiteit Amsterdam.
+for their cognition, mental health, and well-being.
 
 ```{=html}
 <div class="social-row">
@@ -51,22 +54,21 @@ narratives around media effects and the effectiveness of strategies, both
 behavioural and technological, for mitigating harms and enhancing benefits. A
 central thread is understanding the digital competencies that enable people to
 thrive in a technology-driven world. Beyond self-regulation and digital
-well-being, these include AI literacy, algorithmic literacy, and the ability to
+well-being, these include digital literacy, and the ability to
 critically engage with increasingly complex digital ecosystems. Running through
 all of it is the development, analysis, and use of digital trace data
 techniques to better capture real-world media use and its effects over time.
 
 I'm an advocate of mixed methods, and I routinely combine quantitative,
 qualitative, and computational approaches. I also have experience with
-systematic reviews and meta-analyses. Across all of it, I follow open science
+systematic reviews and meta-analyses. I follow open science
 practices, and wherever possible, my materials, data, and analyses are publicly
 available.
 
-My research has appeared in leading journals across socio-informatics and
+My research has appeared in leading journals across communication science and
 related fields, including *Nature Human Behaviour*; the *Journal of
 Communication*; *Technology, Mind and Behaviour*; *JAMA Pediatrics*; *Media
-Psychology*; the *Journal of Psychopathology and Clinical Science*;
-*Information Technology & People*; *Computers & Education*; *Behaviour Research
+Psychology*; the *Journal of Psychopathology and Clinical Science*; *Computers & Education*; *Behaviour Research
 Methods*; and *Computers in Human Behaviour*.
 
 You can browse my [publications](publications.qmd) or grab my
