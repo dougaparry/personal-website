@@ -23,7 +23,7 @@ External Associate Researcher, Methods Lab, Weizenbaum Institute for the Network
 :::
 
 I study how adolescents and young adults use digital media, and what that means
-for their cognition, mental health, and well-being.
+for their cognition and well-being.
 
 ```{=html}
 <div class="social-row">

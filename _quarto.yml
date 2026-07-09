@@ -28,10 +28,6 @@ website:
       - icon: envelope
         href: mailto:d.a.parry@vu.nl
         aria-label: Email
-      - icon: github
-        href: https://github.com/dougaparry
-        target: _blank
-        aria-label: GitHub
   page-footer:
     left: "© 2026 Douglas A. Parry"
     right: "Built with [Quarto](https://quarto.org)"
