@@ -98,7 +98,9 @@ a:hover { text-decoration: underline; }
 }
 
 // ---- Publications (compact list) ----
-.pub-year {
+// Quarto puts {.pub-year} on the <section> too, so scope heading styles to the
+// h2 only — otherwise font-weight cascades bold onto the whole section.
+h2.pub-year {
   font-size: 1.05rem;
   font-weight: 700;
   color: $blue-dark;
@@ -106,6 +108,7 @@ a:hover { text-decoration: underline; }
   padding-bottom: 0.25rem;
   border-bottom: 1px solid $border-soft;
 }
+section.pub-year { font-weight: 400; }
 .pub {
   padding: 0.45rem 0;
   border-bottom: 1px solid $border-soft;
@@ -113,9 +116,9 @@ a:hover { text-decoration: underline; }
   line-height: 1.5;
 }
 .pub:last-child { border-bottom: none; }
-.pub-title { font-weight: 600; color: $ink; }
+.pub-title { font-weight: 400; color: $ink; }
 .pub-meta { color: $muted; }
-.pub-venue { font-style: italic; }
+.pub-meta em { color: $body-color; font-style: italic; font-weight: 400; }  // journal / book title: dark, not grey, not bold
 .pub-links {
   display: inline;
   white-space: nowrap;

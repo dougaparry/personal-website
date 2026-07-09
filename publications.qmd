@@ -9,11 +9,8 @@ toc-title: "Jump to year"
 Peer-reviewed articles, chapters, and papers
 :::
 
-Generated from a BibTeX file (`publications.bib`) exported from my reference
-library. For the most current list, see my
+A current list, including preprints, is available on my
 [Google Scholar profile](https://scholar.google.co.za/citations?user=EhrDFkYAAAAJ&hl=en){target="_blank"}.
-To add a PDF, drop it in `files/papers/` named after the entry's citation key
-(e.g. `parry_systematic_2021.pdf`) and a PDF link appears automatically.
 
 ```{r}
 #| echo: false
@@ -85,8 +82,8 @@ fmt_authors <- function(a) {
 fmt_venue <- function(r) {
   it <- function(x) paste0("<em>", esc(x), "</em>")
   pg <- function(p) esc(gsub("--", "\u2013", p, fixed = TRUE))   # -- -> en dash
-  if (r$type == "article") {
-    v <- it(r$journal %||% "")
+  if (!is.null(r$journal)) {                                # anything with a journal
+    v <- it(r$journal)
     if (!is.null(r$volume)) v <- paste0(v, ", ", esc(r$volume),
         if (!is.null(r$number)) paste0("(", esc(r$number), ")") else "")
     if (!is.null(r$pages))  v <- paste0(v, ", ", pg(r$pages))
@@ -96,10 +93,8 @@ fmt_venue <- function(r) {
     if (!is.null(r$pages)) v <- paste0(v, " (pp. ", pg(r$pages), ")")
     if (!is.null(r$publisher)) v <- paste0(v, ". ", esc(r$publisher))
     paste0(v, ".")
-  } else if (r$type == "book") {
-    paste0(esc(r$publisher %||% ""), ".")
   } else {
-    paste0(esc(r$publisher %||% r$note %||% "Preprint"), ".")
+    paste0(esc(r$publisher %||% r$note %||% ""), ".")
   }
 }
 
@@ -111,8 +106,7 @@ fmt_links <- function(r) {
   if (!is.null(r$doi)) {
     doi <- r$doi
     href <- if (grepl("^https?://", doi)) doi else paste0("https://doi.org/", doi)
-    lbl <- if (r$type == "misc") "Preprint" else "DOI"
-    L <- c(L, sprintf('<a href="%s" target="_blank">%s</a>', href, lbl))
+    L <- c(L, sprintf('<a href="%s" target="_blank">DOI</a>', href))
   } else if (!is.null(r$url)) {
     L <- c(L, sprintf('<a href="%s" target="_blank">Link</a>', r$url))
   }

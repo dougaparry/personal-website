@@ -43,7 +43,10 @@
       "Bash(grep -o 'In .\\\\{0,30\\\\}Pucihar, K.' _site/publications.html)",
       "Bash(LC_ALL=en_US.UTF-8 grep -oP 'opi.{0,3}Pucihar' _site/publications.html)",
       "Bash(python3 -c ' *)",
-      "Bash(perl -CSD -i -pe 's/gsub\\\\\\(\"--\", \"\\\\x{2013}\"/gsub\\(\"--\", \"\\\\\\\\u2013\"/ if /pg <- function/' publications.qmd)"
+      "Bash(perl -CSD -i -pe 's/gsub\\\\\\(\"--\", \"\\\\x{2013}\"/gsub\\(\"--\", \"\\\\\\\\u2013\"/ if /pg <- function/' publications.qmd)",
+      "Bash(curl -s \"http://localhost:23119/api/users/0/collections/ZWBAUEDJ/items/top?format=bibtex&limit=200\" -o /tmp/pubs_new.bib)",
+      "Bash(awk '/^@misc/{p=1} p{print} /^}/{if\\(p\\) exit}' /tmp/pubs_new.bib)",
+      "Bash(awk '{print $1\" commit\\(s\\) ahead of origin\"}')"
     ]
   }
 }
