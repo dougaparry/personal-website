@@ -6,42 +6,139 @@ toc-title: "Jump to year"
 ---
 
 ::: {.section-lead}
-Peer-reviewed articles
+Peer-reviewed articles, chapters, and papers
 :::
 
-For the complete and most up-to-date list, see my
-[Google Scholar profile](https://scholar.google.com/){target="_blank"}. PDFs are
-provided where I'm able to share them.
+Generated from a BibTeX file (`publications.bib`) exported from my reference
+library. For the most current list, see my
+[Google Scholar profile](https://scholar.google.co.za/citations?user=EhrDFkYAAAAJ&hl=en){target="_blank"}.
+To add a PDF, drop it in `files/papers/` named after the entry's citation key
+(e.g. `parry_systematic_2021.pdf`) and a PDF link appears automatically.
 
-<!--
-HOW TO ADD A PUBLICATION
-------------------------
-Copy one <div class="pub"> ... </div> block into the correct year section.
-Fill in title / authors / venue. Drop the PDF into files/papers/ and link it.
-Delete any <a> link you don't need. Keep the newest year at the top.
--->
+```{r}
+#| echo: false
+#| output: asis
 
-## 2025 {.pub-year}
+## Work in a UTF-8 locale so accented names / dashes read & print correctly
+## regardless of the machine running the build.
+for (loc in c("en_US.UTF-8", "C.UTF-8", "en_US.utf8", "C.utf8")) {
+  if (suppressWarnings(Sys.setlocale("LC_CTYPE", loc)) != "") break
+}
 
-```{=html}
-<div class="pub">
-  <span class="pub-title">An example paper title goes here about digital media and attention.</span>
-  <span class="pub-meta"><strong>Parry, D. A.</strong>, Coauthor, B., &amp; Coauthor, C. <span class="pub-venue">Journal of Communication</span>, 75(2), 123–145.</span>
-  <span class="pub-links"><a href="files/papers/example-2025.pdf" target="_blank">PDF</a><a href="https://doi.org/" target="_blank">DOI</a><a href="https://osf.io/" target="_blank">Data</a></span>
-</div>
-```
+## ---- minimal BibTeX reader (base R only) --------------------------------
+bib <- readLines("publications.bib", warn = FALSE, encoding = "UTF-8")
+starts <- grep("^@", bib)
+ends   <- c(starts[-1] - 1, length(bib))
+entries <- Map(function(s, e) bib[s:e], starts, ends)
 
-## 2024 {.pub-year}
+esc <- function(x) {
+  if (is.null(x)) return(x)
+  x <- gsub("&", "&amp;", x, fixed = TRUE)
+  x <- gsub("<", "&lt;",  x, fixed = TRUE)
+  gsub(">", "&gt;",  x, fixed = TRUE)
+}
+`%||%` <- function(a, b) if (is.null(a) || is.na(a) || !nzchar(a)) b else a
 
-```{=html}
-<div class="pub">
-  <span class="pub-title">Another example: a meta-analysis of media multitasking and cognition.</span>
-  <span class="pub-meta"><strong>Parry, D. A.</strong>, &amp; Coauthor, B. <span class="pub-venue">Nature Human Behaviour</span>, 8, 200–214.</span>
-  <span class="pub-links"><a href="https://doi.org/" target="_blank">DOI</a><a href="https://psyarxiv.com/" target="_blank">Preprint</a></span>
-</div>
-<div class="pub">
-  <span class="pub-title">A third example entry to show the layout with two papers in a year.</span>
-  <span class="pub-meta">Coauthor, A., <strong>Parry, D. A.</strong>, &amp; Coauthor, C. <span class="pub-venue">Computers in Human Behaviour</span>, 150, 108000.</span>
-  <span class="pub-links"><a href="files/papers/example-2024b.pdf" target="_blank">PDF</a><a href="https://doi.org/" target="_blank">DOI</a></span>
-</div>
+parse_entry <- function(lines) {
+  h <- regmatches(lines[1], regexec("^@([a-zA-Z]+)\\{([^,]+),", lines[1]))[[1]]
+  rec <- list(type = tolower(h[2]), key = trimws(h[3]))
+  for (ln in lines[-1]) {
+    m <- regmatches(ln, regexec("^\\s*([a-zA-Z]+)\\s*=\\s*(.*)$", ln))[[1]]
+    if (length(m) == 3) {
+      v <- trimws(m[3])
+      v <- sub(",\\s*$", "", v)                         # trailing comma
+      v <- sub("^\\{", "", v); v <- sub("\\}$", "", v)  # wrapping braces
+      v <- gsub("[{}]", "", v)                          # case-protection braces
+      v <- gsub("\\\\([&%_#$])", "\\1", v)              # unescape LaTeX specials (\& -> &)
+      rec[[tolower(m[2])]] <- v
+    }
+  }
+  rec
+}
+recs <- lapply(entries, parse_entry)
+
+## ---- formatting helpers -------------------------------------------------
+fmt_authors <- function(a) {
+  if (is.null(a)) return("")
+  people <- trimws(strsplit(a, " and ", fixed = TRUE)[[1]])
+  one <- function(p) {
+    if (tolower(p) == "others") return("et al.")
+    if (!grepl(",", p, fixed = TRUE)) return(esc(p))   # consortium / single name
+    fam <- trimws(sub(",.*$", "", p))
+    giv <- trimws(sub("^[^,]*,", "", p))
+    toks <- unlist(strsplit(giv, "[ .]+")); toks <- toks[nzchar(toks)]
+    inits <- if (length(toks)) paste0(toupper(substr(toks, 1, 1)), ".", collapse = " ") else ""
+    nm <- esc(trimws(paste0(fam, ", ", inits)))
+    if (grepl("Parry", fam, fixed = TRUE)) nm <- paste0("<strong>", nm, "</strong>")
+    nm
+  }
+  out <- vapply(people, one, character(1))
+  truncated <- FALSE
+  if (length(out) > 10) { out <- c(out[1:10], "et al."); truncated <- TRUE }
+  n <- length(out)
+  if (n == 1) return(out)
+  if (truncated || identical(out[n], "et al."))
+    return(paste(out, collapse = ", "))
+  paste0(paste(out[-n], collapse = ", "), ", &amp; ", out[n])
+}
+
+fmt_venue <- function(r) {
+  it <- function(x) paste0("<em>", esc(x), "</em>")
+  pg <- function(p) esc(gsub("--", "\u2013", p, fixed = TRUE))   # -- -> en dash
+  if (r$type == "article") {
+    v <- it(r$journal %||% "")
+    if (!is.null(r$volume)) v <- paste0(v, ", ", esc(r$volume),
+        if (!is.null(r$number)) paste0("(", esc(r$number), ")") else "")
+    if (!is.null(r$pages))  v <- paste0(v, ", ", pg(r$pages))
+    paste0(v, ".")
+  } else if (r$type %in% c("incollection", "inproceedings")) {
+    v <- paste0("In ", it(r$booktitle %||% "the proceedings"))
+    if (!is.null(r$pages)) v <- paste0(v, " (pp. ", pg(r$pages), ")")
+    if (!is.null(r$publisher)) v <- paste0(v, ". ", esc(r$publisher))
+    paste0(v, ".")
+  } else if (r$type == "book") {
+    paste0(esc(r$publisher %||% ""), ".")
+  } else {
+    paste0(esc(r$publisher %||% r$note %||% "Preprint"), ".")
+  }
+}
+
+fmt_links <- function(r) {
+  L <- character(0)
+  pdf <- file.path("files/papers", paste0(r$key, ".pdf"))
+  if (file.exists(pdf))
+    L <- c(L, sprintf('<a href="%s" target="_blank">PDF</a>', pdf))
+  if (!is.null(r$doi)) {
+    doi <- r$doi
+    href <- if (grepl("^https?://", doi)) doi else paste0("https://doi.org/", doi)
+    lbl <- if (r$type == "misc") "Preprint" else "DOI"
+    L <- c(L, sprintf('<a href="%s" target="_blank">%s</a>', href, lbl))
+  } else if (!is.null(r$url)) {
+    L <- c(L, sprintf('<a href="%s" target="_blank">Link</a>', r$url))
+  }
+  paste(L, collapse = "")
+}
+
+## ---- assemble & sort by year (desc), no-date last -----------------------
+years <- vapply(recs, function(r) {
+  y <- suppressWarnings(as.integer(sub(".*?([0-9]{4}).*", "\\1", r$year %||% "")))
+  if (is.na(y)) 0L else y
+}, integer(1))
+
+for (y in sort(unique(years), decreasing = TRUE)) {
+  lbl <- if (y == 0L) "Undated" else as.character(y)
+  cat("\n## ", lbl, " {.pub-year}\n\n", sep = "")
+  cat("```{=html}\n")                       # raw HTML block: no markdown escaping
+  for (r in recs[years == y]) {
+    title <- esc(r$title %||% "Untitled")
+    if (!grepl("[.?!]$", title)) title <- paste0(title, ".")   # avoid double period
+    meta  <- paste0(fmt_authors(r$author), " ", fmt_venue(r))
+    links <- fmt_links(r)
+    cat('<div class="pub"><span class="pub-title">', title,
+        '</span> <span class="pub-meta">', meta, '</span>',
+        if (nzchar(links)) paste0(' <span class="pub-links">', links, '</span>') else "",
+        "</div>\n", sep = "")
+  }
+  cat("```\n\n")
+}
 ```
