@@ -22,7 +22,8 @@
       "Bash(git add *)",
       "Bash(awk '{print $1\" files staged\"}')",
       "Bash(git check-ignore *)",
-      "Bash(git commit -q -m ' *)"
+      "Bash(git commit -q -m ' *)",
+      "Bash(git remote *)"
     ]
   }
 }

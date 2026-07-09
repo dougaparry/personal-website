@@ -12,6 +12,7 @@ website:
   description: "Media psychologist studying digital media, cognition, and well-being."
   site-url: "https://dougaparry.com"
   favicon: images/favicon.png
+  search: false
   navbar:
     logo: ""
     title: "Doug Parry"
@@ -20,8 +21,6 @@ website:
         text: About
       - href: publications.qmd
         text: Publications
-      - href: blog.qmd
-        text: Blog
     right:
       - href: files/curriculum_vitae.pdf
         text: CV

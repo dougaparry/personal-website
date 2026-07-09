@@ -6,7 +6,9 @@ toc: false
 ---
 
 ::: {.hero}
-![](images/dougaparry.png){.hero-photo fig-alt="Douglas Parry"}
+```{=html}
+<img src="images/dougaparry.png" class="hero-photo" alt="Douglas Parry">
+```
 
 ::: {.hero-body}
 # Douglas A. Parry
@@ -67,8 +69,7 @@ Psychology*; the *Journal of Psychopathology and Clinical Science*;
 *Information Technology & People*; *Computers & Education*; *Behaviour Research
 Methods*; and *Computers in Human Behaviour*.
 
-You can browse my [publications](publications.qmd), read the [blog](blog.qmd)
-where I write about methods and share R-based analyses, or grab my
+You can browse my [publications](publications.qmd) or grab my
 [CV](files/curriculum_vitae.pdf).
 
 ## Get in touch
