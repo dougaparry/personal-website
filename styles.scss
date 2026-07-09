@@ -1,0 +1,155 @@
+/*-- scss:defaults --*/
+
+// Fonts
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-family-serif: "Newsreader", Georgia, "Times New Roman", serif;
+$headings-font-family: $font-family-sans-serif;
+
+// Palette: clean minimal, VU Amsterdam blue accent (#0077B3)
+$blue:        #0077b3;
+$blue-dark:   #005c88;
+$blue-tint:   #d6ebf5;
+$ink:         #1a1a1a;
+$body-color:  #3a3a38;
+$muted:       #6b6b66;
+$border-soft: #ececea;
+
+$primary:     $blue;
+$link-color:  $blue-dark;
+$link-hover-color: $blue;
+
+$body-bg:     #ffffff;
+$navbar-bg:   #ffffff;
+
+// Base sizing
+$font-size-root:  17px;
+$line-height-base: 1.65;
+$headings-font-weight: 600;
+
+/*-- scss:rules --*/
+
+body {
+  color: $body-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: $ink; letter-spacing: -0.01em; }
+h1 { font-weight: 700; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+// ---- Navbar ----
+.navbar {
+  border-bottom: 1px solid $border-soft;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.navbar .navbar-brand { font-weight: 600; color: $ink; font-size: 1.05rem; }
+.navbar .nav-link { color: $muted !important; font-size: 0.95rem; }
+.navbar .nav-link:hover { color: $ink !important; }
+.navbar .nav-link.active { color: $ink !important; font-weight: 500; }
+
+// CV button in navbar
+.navbar a[href*="curriculum_vitae"] {
+  color: $blue-dark !important;
+  font-weight: 600;
+}
+
+// ---- Hero (landing) ----
+.hero {
+  display: flex;
+  gap: 2.25rem;
+  align-items: flex-start;
+  margin: 2.5rem 0 2rem;
+}
+.hero-photo {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid $blue-tint;
+}
+.hero-body h1 { margin: 0 0 0.15rem; font-size: 2rem; }
+.hero-role { color: $blue-dark; font-weight: 600; margin: 0 0 0.75rem; font-size: 1.02rem; }
+.hero-body p { margin: 0 0 0.9rem; }
+
+@media (max-width: 620px) {
+  .hero { flex-direction: column; gap: 1.25rem; align-items: center; text-align: center; }
+}
+
+// ---- Social row ----
+.social-row { display: flex; gap: 1rem; font-size: 1.35rem; margin-top: 0.25rem; }
+.social-row a { color: $muted; transition: color .15s ease; }
+.social-row a:hover { color: $blue; text-decoration: none; }
+
+// ---- Section headings ----
+.section-lead {
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: $blue-dark;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+// ---- Publications (compact list) ----
+.pub-year {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 1.6rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid $border-soft;
+}
+.pub {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid $border-soft;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.pub:last-child { border-bottom: none; }
+.pub-title { font-weight: 600; color: $ink; }
+.pub-meta { color: $muted; }
+.pub-venue { font-style: italic; }
+.pub-links {
+  display: inline;
+  white-space: nowrap;
+}
+.pub-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: $blue-dark;
+  border: 1px solid $blue-tint;
+  border-radius: 4px;
+  padding: 0.04rem 0.4rem;
+  margin-left: 0.25rem;
+}
+.pub-links a:hover { background: $blue-tint; text-decoration: none; }
+
+// ---- Blog listing cards ----
+.quarto-listing { margin-top: 1.5rem; }
+div.quarto-post {
+  border-bottom: 1px solid $border-soft;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+div.quarto-post .listing-title { font-weight: 600; }
+div.quarto-post .listing-date,
+div.quarto-post .listing-reading-time { color: $muted; }
+
+// ---- Footer ----
+.nav-footer {
+  border-top: 1px solid $border-soft;
+  color: $muted;
+  font-size: 0.88rem;
+}
+.nav-footer a { color: $muted; }
+
+// ---- Code blocks (for R / Quarto posts) ----
+div.sourceCode {
+  border-radius: 8px;
+  border: 1px solid $border-soft;
+}
+pre.sourceCode { font-size: 0.86rem; }

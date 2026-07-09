@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "Bash(brew --version)",
+      "Bash(brew install *)",
+      "Bash(quarto --version)",
+      "Read(//usr/local/bin/**)",
+      "Read(//usr/local/**)",
+      "Bash(brew list *)",
+      "Bash(/private/tmp/claude-502/-Users-douglasparry-My-Drive-personal-website/23c1f275-86f9-4bd4-b206-e741a174950d/scratchpad/qexp/quarto-core.pkg/Payload/bin/quarto render *)",
+      "Bash(echo \"=== EXIT $? ===\")",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\")",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\")",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css\")",
+      "Bash(gh auth *)",
+      "Bash(sips -g pixelWidth -g pixelHeight images/dougaparry.png)",
+      "Bash(sips -Z 700 images/dougaparry.png --out images/dougaparry.png)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(awk '{print $1\" files staged\"}')",
+      "Bash(git check-ignore *)",
+      "Bash(git commit -q -m ' *)"
+    ]
+  }
+}

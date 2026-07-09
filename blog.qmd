@@ -1,0 +1,23 @@
+---
+title: "Blog"
+pagetitle: "Blog, Douglas A. Parry"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [date, title, reading-time, description, categories]
+  feed: true
+page-layout: article
+toc: false
+---
+
+::: {.section-lead}
+Writing
+:::
+
+Notes on methods, open science, and analyses, often with the R code and data
+behind them. Posts are written in Quarto, so the code you see is the code that
+produced the results.

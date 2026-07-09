@@ -1,0 +1,17 @@
+{
+  "hash": "e06b3b32f664507fb7fb8c2c70e71502",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Reproducible analyses in R, on a webpage\"\ndescription: \"A first post showing how code, data, and results live together in a Quarto blog, with a small R example.\"\ndate: \"2026-07-09\"\ncategories: [R, open science, meta]\nimage: \"thumbnail.png\"\n---\n\n\n\nThis blog is written in [Quarto](https://quarto.org), which means every post\ncan contain real, runnable code. When I publish, Quarto executes the code and\ndrops the results (tables, figures, models) straight into the page. Nothing\nis copy-pasted, so what you read is exactly what the code produced.\n\nHere's a tiny example. I'll simulate some data on daily screen time and a\nwell-being score, then plot the relationship.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(42)\n\nn <- 200\nscreen_time <- rgamma(n, shape = 2, scale = 1.6)          # hours per day\nwellbeing   <- 70 - 3.1 * screen_time + rnorm(n, 0, 6)    # arbitrary scale\n\nd <- data.frame(screen_time, wellbeing)\nhead(d)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n  screen_time wellbeing\n1    5.838330  47.70299\n2    1.420976  68.96039\n3    2.494752  62.55328\n4    0.723492  71.15898\n5    2.196544  56.01376\n6    1.284487  71.77570\n```\n\n\n:::\n:::\n\n\n\nA quick linear model:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfit <- lm(wellbeing ~ screen_time, data = d)\nsummary(fit)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n\nCall:\nlm(formula = wellbeing ~ screen_time, data = d)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-15.6435  -4.8790   0.2777   4.7178  13.0123 \n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  69.6767     0.7788   89.47   <2e-16 ***\nscreen_time  -3.1250     0.2100  -14.88   <2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 6.245 on 198 degrees of freedom\nMultiple R-squared:  0.5279,\tAdjusted R-squared:  0.5255 \nF-statistic: 221.4 on 1 and 198 DF,  p-value: < 2.2e-16\n```\n\n\n:::\n:::\n\n\n\nAnd the figure, with the code that draws it right above it in the source:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(d$screen_time, d$wellbeing,\n     pch = 19, col = \"#0077b388\",\n     xlab = \"Screen time (hours/day)\",\n     ylab = \"Well-being score\",\n     bty = \"n\")\nabline(fit, col = \"#005c88\", lwd = 2)\n```\n\n::: {.cell-output-display}\n![Simulated association between daily screen time and a well-being score.](index_files/figure-html/fig-screentime-1.png){#fig-screentime width=672}\n:::\n:::\n\n\n\nThat's the whole idea: the analysis and the write-up are one document. To add a\npost, I create a new folder under `posts/`, drop an `index.qmd` inside, and write.\nBecause of `freeze: true` in `posts/_metadata.yml`, the code only re-runs when I\nchange the post, so rebuilding the site stays fast even as the analyses pile up.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

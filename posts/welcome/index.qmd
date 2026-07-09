@@ -1,0 +1,55 @@
+---
+title: "Reproducible analyses in R, on a webpage"
+description: "A first post showing how code, data, and results live together in a Quarto blog, with a small R example."
+date: "2026-07-09"
+categories: [R, open science, meta]
+image: "thumbnail.png"
+---
+
+This blog is written in [Quarto](https://quarto.org), which means every post
+can contain real, runnable code. When I publish, Quarto executes the code and
+drops the results (tables, figures, models) straight into the page. Nothing
+is copy-pasted, so what you read is exactly what the code produced.
+
+Here's a tiny example. I'll simulate some data on daily screen time and a
+well-being score, then plot the relationship.
+
+```{r}
+#| label: setup
+set.seed(42)
+
+n <- 200
+screen_time <- rgamma(n, shape = 2, scale = 1.6)          # hours per day
+wellbeing   <- 70 - 3.1 * screen_time + rnorm(n, 0, 6)    # arbitrary scale
+
+d <- data.frame(screen_time, wellbeing)
+head(d)
+```
+
+A quick linear model:
+
+```{r}
+#| label: model
+fit <- lm(wellbeing ~ screen_time, data = d)
+summary(fit)
+```
+
+And the figure, with the code that draws it right above it in the source:
+
+```{r}
+#| label: fig-screentime
+#| fig-cap: "Simulated association between daily screen time and a well-being score."
+#| fig-width: 7
+#| fig-height: 4.2
+plot(d$screen_time, d$wellbeing,
+     pch = 19, col = "#0077b388",
+     xlab = "Screen time (hours/day)",
+     ylab = "Well-being score",
+     bty = "n")
+abline(fit, col = "#005c88", lwd = 2)
+```
+
+That's the whole idea: the analysis and the write-up are one document. To add a
+post, I create a new folder under `posts/`, drop an `index.qmd` inside, and write.
+Because of `freeze: true` in `posts/_metadata.yml`, the code only re-runs when I
+change the post, so rebuilding the site stays fast even as the analyses pile up.

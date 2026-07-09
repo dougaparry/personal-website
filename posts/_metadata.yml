@@ -1,0 +1,14 @@
+# Options applied to every blog post
+freeze: true          # cache computational output; only re-run when the .qmd changes
+title-block-banner: false
+toc: true
+toc-depth: 3
+date-format: "D MMM YYYY"
+author: "Douglas A. Parry"
+code-tools: true        # let readers view/copy the source
+code-fold: false
+code-line-numbers: false
+execute:
+  echo: true            # show the code
+  warning: false
+  message: false

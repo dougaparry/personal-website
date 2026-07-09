@@ -1,0 +1,22 @@
+# Quarto build output — regenerated on every render, don't commit
+/_site/
+/.quarto/
+.quarto-bin/
+quarto.tar.gz
+
+# IMPORTANT: do NOT ignore /_freeze/ — it caches R output so Netlify
+# can build without R installed. It must be committed.
+
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+
+**/*.quarto_ipynb

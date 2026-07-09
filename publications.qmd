@@ -1,0 +1,47 @@
+---
+title: "Publications"
+pagetitle: "Publications, Douglas A. Parry"
+toc: true
+toc-title: "Jump to year"
+---
+
+::: {.section-lead}
+Peer-reviewed articles
+:::
+
+For the complete and most up-to-date list, see my
+[Google Scholar profile](https://scholar.google.com/){target="_blank"}. PDFs are
+provided where I'm able to share them.
+
+<!--
+HOW TO ADD A PUBLICATION
+------------------------
+Copy one <div class="pub"> ... </div> block into the correct year section.
+Fill in title / authors / venue. Drop the PDF into files/papers/ and link it.
+Delete any <a> link you don't need. Keep the newest year at the top.
+-->
+
+## 2025 {.pub-year}
+
+```{=html}
+<div class="pub">
+  <span class="pub-title">An example paper title goes here about digital media and attention.</span>
+  <span class="pub-meta"><strong>Parry, D. A.</strong>, Coauthor, B., &amp; Coauthor, C. <span class="pub-venue">Journal of Communication</span>, 75(2), 123–145.</span>
+  <span class="pub-links"><a href="files/papers/example-2025.pdf" target="_blank">PDF</a><a href="https://doi.org/" target="_blank">DOI</a><a href="https://osf.io/" target="_blank">Data</a></span>
+</div>
+```
+
+## 2024 {.pub-year}
+
+```{=html}
+<div class="pub">
+  <span class="pub-title">Another example: a meta-analysis of media multitasking and cognition.</span>
+  <span class="pub-meta"><strong>Parry, D. A.</strong>, &amp; Coauthor, B. <span class="pub-venue">Nature Human Behaviour</span>, 8, 200–214.</span>
+  <span class="pub-links"><a href="https://doi.org/" target="_blank">DOI</a><a href="https://psyarxiv.com/" target="_blank">Preprint</a></span>
+</div>
+<div class="pub">
+  <span class="pub-title">A third example entry to show the layout with two papers in a year.</span>
+  <span class="pub-meta">Coauthor, A., <strong>Parry, D. A.</strong>, &amp; Coauthor, C. <span class="pub-venue">Computers in Human Behaviour</span>, 150, 108000.</span>
+  <span class="pub-links"><a href="files/papers/example-2024b.pdf" target="_blank">PDF</a><a href="https://doi.org/" target="_blank">DOI</a></span>
+</div>
+```
