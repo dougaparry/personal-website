@@ -22,9 +22,6 @@ External Associate Research Fellow, Department of Information Science, Stellenbo
 External Associate Researcher, Methods Lab, Weizenbaum Institute for the Networked Society, Germany
 :::
 
-I study how adolescents and young adults use digital media, and what that means
-for their cognition and well-being.
-
 ```{=html}
 <div class="social-row">
   <a href="https://scholar.google.co.za/citations?user=EhrDFkYAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
