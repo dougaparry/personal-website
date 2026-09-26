@@ -6,6 +6,7 @@ project:
     - "posts/**/*.qmd"
   resources:
     - "_headers"        # Netlify security headers, copied into _site/
+    - "esm-primer/**"   # pre-built Quarto book, passed through un-rendered
 
 website:
   title: "Douglas A. Parry"
@@ -21,6 +22,8 @@ website:
         text: About
       - href: publications.qmd
         text: Publications
+      - href: esm-primer/index.html
+        text: ESM Primer
     right:
       - href: files/curriculum_vitae.pdf
         text: CV

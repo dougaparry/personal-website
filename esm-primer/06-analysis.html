@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Data analysis – Brief Experience Sampling Primer</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-further-reading.html" rel="next">
+<link href="./05-processing.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a930c1ea56d3c89e28a32ab090513413.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-594e0f838834c2ada8935efbe523737a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a930c1ea56d3c89e28a32ab090513413.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-analysis.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brief Experience Sampling Primer</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dougaparry/esm-primer" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Research design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Measurement and questionnaire design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-collection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Study setup and data collection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data processing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-further-reading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Further reading and references</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A-simulated-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simulated dataset</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./B-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-why-mlm" id="toc-sec-why-mlm" class="nav-link active" data-scroll-target="#sec-why-mlm"><span class="header-section-number">6.1</span> Why multilevel models?</a></li>
+  <li><a href="#sec-mlm" id="toc-sec-mlm" class="nav-link" data-scroll-target="#sec-mlm"><span class="header-section-number">6.2</span> Multilevel regression, step by step</a>
+  <ul class="collapse">
+  <li><a href="#random-intercepts-and-random-slopes" id="toc-random-intercepts-and-random-slopes" class="nav-link" data-scroll-target="#random-intercepts-and-random-slopes">Random intercepts and random slopes</a></li>
+  <li><a href="#writing-and-running-the-model-in-lmer" id="toc-writing-and-running-the-model-in-lmer" class="nav-link" data-scroll-target="#writing-and-running-the-model-in-lmer">Writing and running the model in <code>lmer</code></a></li>
+  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output">Reading the output</a></li>
+  <li><a href="#model-building-advice" id="toc-model-building-advice" class="nav-link" data-scroll-target="#model-building-advice">Model-building advice</a></li>
+  <li><a href="#why-report-unstandardised-effects" id="toc-why-report-unstandardised-effects" class="nav-link" data-scroll-target="#why-report-unstandardised-effects">Why report unstandardised effects</a></li>
+  <li><a href="#fitting-the-same-model-with-brms" id="toc-fitting-the-same-model-with-brms" class="nav-link" data-scroll-target="#fitting-the-same-model-with-brms">Fitting the same model with <code>brms</code></a></li>
+  </ul></li>
+  <li><a href="#sec-autocorr" id="toc-sec-autocorr" class="nav-link" data-scroll-target="#sec-autocorr"><span class="header-section-number">6.3</span> Autocorrelated residuals</a></li>
+  <li><a href="#sec-lagged" id="toc-sec-lagged" class="nav-link" data-scroll-target="#sec-lagged"><span class="header-section-number">6.4</span> Lagged (temporal) effects</a></li>
+  <li><a href="#sec-dsem" id="toc-sec-dsem" class="nav-link" data-scroll-target="#sec-dsem"><span class="header-section-number">6.5</span> Dynamic structural equation modelling</a></li>
+  <li><a href="#sec-var" id="toc-sec-var" class="nav-link" data-scroll-target="#sec-var"><span class="header-section-number">6.6</span> Multilevel VAR and network models</a></li>
+  <li><a href="#sec-variability" id="toc-sec-variability" class="nav-link" data-scroll-target="#sec-variability"><span class="header-section-number">6.7</span> Modelling variability</a></li>
+  <li><a href="#sec-nonnormal" id="toc-sec-nonnormal" class="nav-link" data-scroll-target="#sec-nonnormal"><span class="header-section-number">6.8</span> Non-normal outcomes</a></li>
+  <li><a href="#sec-idiographic" id="toc-sec-idiographic" class="nav-link" data-scroll-target="#sec-idiographic"><span class="header-section-number">6.9</span> Person-specific (idiographic) models</a></li>
+  <li><a href="#sec-missing" id="toc-sec-missing" class="nav-link" data-scroll-target="#sec-missing"><span class="header-section-number">6.10</span> Missing data</a></li>
+  <li><a href="#sec-power" id="toc-sec-power" class="nav-link" data-scroll-target="#sec-power"><span class="header-section-number">6.11</span> Sample size and power</a></li>
+  <li><a href="#sec-causal" id="toc-sec-causal" class="nav-link" data-scroll-target="#sec-causal"><span class="header-section-number">6.12</span> From temporal precedence to causal claims</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-analysis" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data analysis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Analysis choices follow from the research question (<a href="02-design.html#sec-questions" class="quarto-xref"><span>Section 2.1</span></a>). Here we start with the workhorse, the multilevel regression model, then we’ll consider temporal dependency, lagged and dynamic models, variability, non-normal outcomes, person-specific models, missing data, power, and causal inference.</p>
+<section id="sec-why-mlm" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-why-mlm"><span class="header-section-number">6.1</span> Why multilevel models?</h2>
+<p>Prompts from the same person are more similar to each other than prompts from different people (the ICC for negative affect in our example dataset is 0.47). Ordinary regression treats all 6,294 responses as independent, which makes standard errors far too small for person-level effects. Averaging each person’s responses into one score avoids that but throws away all within-person information. Multilevel models (also called mixed-effects, or random-effects models) keep every observation while modelling the nesting:</p>
+<ul>
+<li>they estimate within-person and between-person effects in one model;</li>
+<li>they allow effects to differ across people (random slopes) and explain those differences with person-level variables;</li>
+<li>they handle unequal numbers of observations per person without listwise deletion of people;</li>
+<li>they give valid inference under the missing-at-random assumption for missing outcomes.</li>
+</ul>
+</section>
+<section id="sec-mlm" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-mlm"><span class="header-section-number">6.2</span> Multilevel regression, step by step</h2>
+<p>Considering the example dataset, the running question: <em>When people are more stressed than usual, is their negative affect (NA) higher, and is this link stronger in people high in neuroticism?</em></p>
+<p><span id="eq-mlm"><span class="math display">\[
+\begin{aligned}
+\text{Level 1:}\quad \text{NA}_{ti} &amp;= \beta_{0i} + \beta_{1i}\left(\text{stress}_{ti} - \overline{\text{stress}}_{i}\right) + e_{ti} \\
+\text{Level 2:}\quad \beta_{0i} &amp;= \gamma_{00} + \gamma_{01}\,\overline{\text{stress}}_{i} + \gamma_{02}\,\text{neuro}_{i} + u_{0i} \\
+\beta_{1i} &amp;= \gamma_{10} + \gamma_{11}\,\text{neuro}_{i} + u_{1i}
+\end{aligned}
+\tag{6.1}\]</span></span></p>
+<p><span class="math inline">\(e_{ti} \sim N(0, \sigma^2)\)</span> is moment-level residual variation. <span class="math inline">\((u_{0i}, u_{1i})\)</span> are person-specific deviations from the average intercept and slope, assumed bivariate normal with variances <span class="math inline">\(\tau_{00}\)</span>, <span class="math inline">\(\tau_{11}\)</span> and covariance <span class="math inline">\(\tau_{01}\)</span>. <span class="math inline">\(\gamma_{10}\)</span> is the average <span class="w">within-person</span> effect, <span class="math inline">\(\gamma_{01}\)</span> the <span class="b">between-person</span> effect, and <span class="math inline">\(\gamma_{11}\)</span> the cross-level interaction.</p>
+<section id="random-intercepts-and-random-slopes" class="level3">
+<h3 class="anchored" data-anchor-id="random-intercepts-and-random-slopes">Random intercepts and random slopes</h3>
+<p>The “multilevel” part of the model lives in the random-effects term, written <code>(1 + stress_cw | id)</code> in <code>lme4</code>.</p>
+<p>A <strong>random intercept</strong> gives every person their own baseline level of the outcome. People differ in how negative they feel on average; the random intercept <span class="math inline">\(u_{0i}\)</span> captures that spread (its variance is <span class="math inline">\(\tau_{00}\)</span>), so the model does not pretend everyone shares one grand mean. It is also what accounts for the nesting: because repeated prompts from one person share that person’s intercept, the model treats them as non-independent and keeps the standard errors honest. You almost always want at least a random intercept for the grouping variable — it is the minimum that makes a model “multilevel”. In <code>lme4</code> it is written <code>(1 | id)</code>, and it answers the question <em>how much do people differ in their average level?</em></p>
+<p>A <strong>random slope</strong> goes further and gives every person their own <em>effect</em> of a within-person predictor. If stress reactivity varies — some people’s negative affect leaps when they are stressed, others’ barely moves — then the slope of <code>stress_cw</code> is itself a person-level quantity, <span class="math inline">\(u_{1i}\)</span>, with variance <span class="math inline">\(\tau_{11}\)</span>. In <code>lme4</code> you add it inside the same bracket: <code>(1 + stress_cw | id)</code> means “let both the intercept and the <code>stress_cw</code> slope vary across people.” It answers <em>how much do people differ in the effect?</em> — often the more interesting question in ESM, and the one a cross-level moderator (here, neuroticism) tries to explain.</p>
+<p>Two practical points follow:</p>
+<ul>
+<li><strong>Why you usually need the random slope.</strong> If a within-person effect genuinely varies across people and you omit its random slope, the model underestimates the uncertainty in the corresponding fixed effect and in any cross-level interaction, giving standard errors that are too small and <em>p</em>-values too optimistic. As a default, include a random slope for any within-person predictor your hypothesis concerns.</li>
+<li><strong>When one or both.</strong> Always start with the random intercept. Add random slopes for the within-person predictors you care about, budget permitting: each costs a variance, plus a covariance with the intercept (<span class="math inline">\(\tau_{01}\)</span>) that is itself informative — for instance, whether people with higher baseline NA also react more strongly. Level-2 predictors that do not vary within a person (neuroticism, the person-mean of stress) cannot have a random slope; they enter as fixed effects only. When the data cannot support every random slope, simplify in a pre-specified order (drop the correlation first, then the least central slope) rather than by trial and error.</li>
+</ul>
+</section>
+<section id="writing-and-running-the-model-in-lmer" class="level3">
+<h3 class="anchored" data-anchor-id="writing-and-running-the-model-in-lmer">Writing and running the model in <code>lmer</code></h3>
+<p>It helps to read the <code>lmer</code> formula as the equation above, assembled one term at a time. Start from the empty model and build up:</p>
+<ul>
+<li><code>na ~ 1 + (1 | id)</code> — the null model: a grand mean plus a random intercept (this is the model used for the ICC in <a href="05-processing.html#sec-descriptives" class="quarto-xref"><span>Section 5.8</span></a>).</li>
+<li><code>na ~ stress_cw + (1 | id)</code> — add the <span class="w">within-person</span> predictor as a fixed effect: the average effect of being more stressed than one’s own usual.</li>
+<li><code>na ~ stress_cw + (1 + stress_cw | id)</code> — let that effect vary across people (the random slope).</li>
+<li><code>na ~ stress_cw + stress_pm_gc + neuro + (1 + stress_cw | id)</code> — add the <span class="b">between-person</span> predictors: the person-mean of stress and the neuroticism trait.</li>
+<li><code>na ~ stress_cw + stress_pm_gc + neuro + stress_cw:neuro + (1 + stress_cw | id)</code> — add the cross-level interaction <code>stress_cw:neuro</code>, which asks whether the within-person stress slope depends on neuroticism.</li>
+</ul>
+<p>The rule for reading the formula: everything inside the brackets and to the left of the <code>|</code> is a random effect (allowed to vary across the units on the right of the <code>|</code>, here <code>id</code>); everything outside the brackets is a fixed effect. <code>stress_cw:neuro</code> is a product term of a level-1 and a level-2 predictor, hence a cross-level interaction. <code>lmerTest</code> wraps <code>lme4</code> to add <em>p</em>-values; <code>REML = TRUE</code> gives less biased variance estimates for the final model, and <code>bobyqa</code> is a robust optimiser. Putting the full formula together and fitting it, we also compare it with a three-level version that adds a day-level random intercept:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(na <span class="sc">~</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span> neuro <span class="sc">+</span> stress_cw<span class="sc">:</span>neuro <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             (<span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span> id),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> esm, <span class="at">REML =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: na ~ stress_cw + stress_pm_gc + neuro + stress_cw:neuro + (1 +  
+    stress_cw | id)
+   Data: esm
+Control: lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 45885.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.4516 -0.6841 -0.0265  0.6589  3.4473 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 51.734   7.193         
+          stress_cw    1.558   1.248    0.02 
+ Residual             79.668   8.926         
+Number of obs: 6294, groups:  id, 100
+
+Fixed effects:
+                Estimate Std. Error      df t value Pr(&gt;|t|)    
+(Intercept)      26.4952     0.7319 97.2413  36.203  &lt; 2e-16 ***
+stress_cw         2.7452     0.1571 96.0692  17.470  &lt; 2e-16 ***
+stress_pm_gc      4.8827     0.7329 97.5430   6.662 1.61e-09 ***
+neuro             3.4292     0.7332 97.2347   4.677 9.40e-06 ***
+stress_cw:neuro   1.0733     0.1575 98.5247   6.814 7.63e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) strss_ strs__ neuro
+stress_cw   0.019                     
+strss_pm_gc 0.010  0.000              
+neuro       0.098  0.002  0.097       
+strss_cw:nr 0.002  0.104  0.000  0.018</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m1b <span class="ot">&lt;-</span> <span class="fu">lmer</span>(na <span class="sc">~</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span> neuro <span class="sc">+</span> stress_cw<span class="sc">:</span>neuro <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span> id) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> id<span class="sc">:</span>day),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> esm, <span class="at">REML =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1, m1b, <span class="at">refit =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data: esm
+Models:
+m1: na ~ stress_cw + stress_pm_gc + neuro + stress_cw:neuro + (1 + stress_cw | id)
+m1b: na ~ stress_cw + stress_pm_gc + neuro + stress_cw:neuro + (1 + stress_cw | id) + (1 | id:day)
+    npar   AIC   BIC logLik -2*log(L)  Chisq Df Pr(&gt;Chisq)    
+m1     9 45904 45965 -22943     45886                         
+m1b   10 45754 45822 -22867     45734 151.88  1  &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output" class="level3">
+<h3 class="anchored" data-anchor-id="reading-the-output">Reading the output</h3>
+<ul>
+<li><strong><span class="w">Within-person effect</span></strong> (<code>stress_cw</code> = 2.75): at moments when a person with average neuroticism is 10 points more stressed than their own average, their NA is 2.75 points higher.</li>
+<li><strong><span class="b">Between-person effect</span></strong> (<code>stress_pm_gc</code> = 4.88): people whose average stress is 10 points higher have average NA that is 4.88 points higher. The contextual effect, 4.88 − 2.75 = 2.14, is the extra between-person association beyond what within-person processes alone would imply.</li>
+<li><strong>Cross-level interaction</strong> (1.07): per SD of neuroticism, the within-person stress slope is about 1.07 points steeper.</li>
+<li><strong>Random slope SD</strong> (1.25): people differ in stress reactivity. For people with average neuroticism, roughly 95% of individual slopes lie within 2.75 ± 1.96 × 1.25, i.e.&nbsp;about 0.3 to 5.2. This spread is often more informative than the average.</li>
+<li><strong>Degrees of freedom</strong> (Satterthwaite, via <code>lmerTest</code>) are close to the number of participants, not the number of observations: for effects that vary across people, the person is the effective unit of replication.</li>
+<li><strong>Day-level variance</strong>: adding a random intercept for days (<code>m1b</code>) significantly improves fit, so negative affect also varies systematically between days within a person. A three-level model is appropriate here.</li>
+</ul>
+</section>
+<section id="model-building-advice" class="level3">
+<h3 class="anchored" data-anchor-id="model-building-advice">Model-building advice</h3>
+<ul>
+<li><strong>Convergence warnings and singular fits</strong> usually mean the random-effects structure is too complex for the data, or variables are on very different scales. Rescale predictors, try another optimiser (<code>lmerControl(optimizer = "bobyqa")</code>), and simplify the random-effects structure in a pre-specified order (e.g., drop random-effect correlations before dropping slopes). Bayesian estimation with weakly informative priors (e.g., <code>brms</code>) is another route.</li>
+<li><strong>REML vs ML.</strong> Use REML for final estimates of variance components. Compare models with different fixed effects using ML (<code>anova()</code> refits automatically) and models with different random effects on REML fits.</li>
+<li><strong>Time.</strong> Consider study day, time of day, and weekday/weekend as covariates. A trend shared by two variables can produce a spurious within-person association.</li>
+</ul>
+</section>
+<section id="why-report-unstandardised-effects" class="level3">
+<h3 class="anchored" data-anchor-id="why-report-unstandardised-effects">Why report unstandardised effects</h3>
+<p>Report coefficients in their original units (in the example, points of negative affect per 10 points of stress) rather than standardised (<span class="math inline">\(\beta\)</span>) coefficients. There are three reasons.</p>
+<p>First, in a multilevel model it is unclear <em>which</em> standard deviation to divide by. A predictor like <code>stress_cw</code> has a within-person SD, a between-person SD, and a total SD, and they differ; standardising by the total SD blends the very levels you worked to separate (<a href="05-processing.html#sec-centering" class="quarto-xref"><span>Section 5.7</span></a>), and there is no single agreed standardised effect size for within-person effects.</p>
+<p>Second, standardised coefficients are hostage to the sample’s variances. Two studies with different compliance, sampling ranges, or populations will have different SDs, so the same underlying process yields different <span class="math inline">\(\beta\)</span>s — which makes standardised effects hard to compare across ESM studies, the opposite of what standardisation is meant to achieve.</p>
+<p>Third, unstandardised coefficients are directly interpretable and reusable: a reader can reason about “3 points of NA per 10 points of stress” on the actual scale, and a future power analysis can take it as an input. To convey magnitude, pair the unstandardised effects with variance explained at each level <span class="citation" data-cites="rights2019">(<a href="08-further-reading.html#ref-rights2019" role="doc-biblioref">Rights &amp; Sterba, 2019</a>, in the <code>r2mlm</code> package)</span> and with the random-slope SD, which shows how much the effect varies across people.</p>
+</section>
+<section id="fitting-the-same-model-with-brms" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-the-same-model-with-brms">Fitting the same model with <code>brms</code></h3>
+<p>This guide uses <code>lme4</code> throughout because it is fast, familiar, and enough for most ESM questions. It is worth knowing the Bayesian alternative, <code>brms</code>, which fits the same models with a nearly identical formula but estimates them with Stan. It is slower, but it comes into its own for the harder cases in this chapter — non-normal outcomes (<a href="#sec-nonnormal" class="quarto-xref"><span>Section 6.8</span></a>), location-scale (variability) models (<a href="#sec-variability" class="quarto-xref"><span>Section 6.7</span></a>), and small samples or complex random-effects structures where maximum likelihood struggles to converge — and it returns full posterior distributions and credible intervals for every quantity.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>m1_brms <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  na <span class="sc">~</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span> neuro <span class="sc">+</span> stress_cw<span class="sc">:</span>neuro <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span> id),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> esm, <span class="at">chains =</span> <span class="dv">4</span>, <span class="at">cores =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">2026</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">class =</span> <span class="st">"b"</span>))   <span class="co"># weakly informative priors on fixed effects</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1_brms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The formula is exactly the model fitted above; <code>prior()</code> adds weakly informative priors on the fixed effects, and <code>summary()</code> reports posterior means with 95% credible intervals in place of <em>p</em>-values. For latent (rather than observed) person-mean centering, and for the dynamic models later in this chapter, Bayesian estimation via <code>brms</code> or DSEM (<a href="#sec-dsem" class="quarto-xref"><span>Section 6.5</span></a>) is often the more natural choice.</p>
+</section>
+</section>
+<section id="sec-autocorr" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-autocorr"><span class="header-section-number">6.3</span> Autocorrelated residuals</h2>
+<p>Momentary states carry over, so residuals of close prompts are correlated. A standard multilevel model assumes residuals are independent within people after accounting for random effects. Ignoring autocorrelation mostly affects standard errors of level-1 effects, and it matters more with closely spaced prompts. The <code>nlme</code> package can model a first-order autoregressive residual structure:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lme</span>(na <span class="sc">~</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span> neuro <span class="sc">+</span> stress_cw<span class="sc">:</span>neuro,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span> id,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">correlation =</span> <span class="fu">corAR1</span>(<span class="at">form =</span> <span class="sc">~</span> beep <span class="sc">|</span> id<span class="sc">/</span>day),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> esm, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)<span class="sc">$</span>tTable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    Value Std.Error   DF   t-value       p-value
+(Intercept)     26.490898 0.7341754 6192 36.082521 6.166463e-259
+stress_cw        2.718165 0.1532864 6192 17.732592  1.145251e-68
+stress_pm_gc     4.856963 0.7344632   97  6.612942  2.058318e-09
+neuro            3.411521 0.7355716   97  4.637918  1.099766e-05
+stress_cw:neuro  1.050667 0.1537188 6192  6.834996  8.985605e-12</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m2<span class="sc">$</span>modelStruct<span class="sc">$</span>corStruct</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlation structure of class corARMA representing
+    Phi1 
+0.258382 </code></pre>
+</div>
+</div>
+<p><code>corAR1</code> assumes equally spaced integer occasions; because the beep number records each prompt’s scheduled position, a missed prompt correctly counts as a gap of two lags. For unequal spacing, <code>corCAR1(form = ~ hours | id/day)</code> models correlation as a function of continuous time. Note that <code>nlme</code> reports level-1 degrees of freedom based on observations, which is liberal for cross-level terms.</p>
+</section>
+<section id="sec-lagged" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-lagged"><span class="header-section-number">6.4</span> Lagged (temporal) effects</h2>
+<p>Lagged models predict a variable at prompt <em>t</em> from variables at prompt <em>t</em> − 1. Including the lagged outcome as a predictor turns the model into a question about <em>change</em>: does stress now predict NA beyond what NA at the previous prompt already predicts? The coefficient of the lagged outcome is the <strong>autoregressive effect</strong>, often interpreted as inertia.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(na <span class="sc">~</span> na_lag_cw <span class="sc">+</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             (<span class="dv">1</span> <span class="sc">+</span> na_lag_cw <span class="sc">+</span> stress_cw <span class="sc">|</span> id),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> esm, <span class="at">REML =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">control =</span> <span class="fu">lmerControl</span>(<span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Estimate Std. Error        df   t value     Pr(&gt;|t|)
+(Intercept)  26.2864819 0.81269083  98.66756 32.344996 2.530129e-54
+na_lag_cw     0.2177502 0.02019549 103.86254 10.782119 1.224700e-18
+stress_cw     2.5750677 0.19815234  91.21513 12.995394 1.809546e-22
+stress_pm_gc  4.3026390 0.79082950 100.41162  5.440666 3.756581e-07</code></pre>
+</div>
+</div>
+<p>Things to keep in mind:</p>
+<ul>
+<li><strong>Cross-lagged effects.</strong> To test whether stress predicts <em>later</em> NA, use <code>stress_lag</code> (person-mean centred) as a predictor while controlling for <code>na_lag</code>. Also test the reverse direction.</li>
+<li><strong>Nickell’s bias.</strong> With observed person-mean centering, autoregressive estimates are biased toward zero, and the bias grows as the number of observations per person shrinks. Latent centering in DSEM avoids this.</li>
+<li><strong>Measurement error</strong> attenuates autoregressive effects and can create spurious cross-lagged effects <span class="citation" data-cites="schuurman2019">(<a href="08-further-reading.html#ref-schuurman2019" role="doc-biblioref">Schuurman &amp; Hamaker, 2019</a>)</span>. Multi-item measures or models with a measurement-error term help.</li>
+<li><strong>The lag is a time interval.</strong> A lag-1 effect with prompts every two hours is a different quantity from a lag-1 effect with daily diaries. Report the average interval, and see <a href="#sec-causal" class="quarto-xref"><span>Section 6.12</span></a> on continuous-time models.</li>
+</ul>
+</section>
+<section id="sec-dsem" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sec-dsem"><span class="header-section-number">6.5</span> Dynamic structural equation modelling</h2>
+<p>Dynamic SEM <span class="citation" data-cites="asparouhov2018">(DSEM, <a href="08-further-reading.html#ref-asparouhov2018" role="doc-biblioref">Asparouhov et al., 2018</a>)</span> combines multilevel modelling, time-series analysis and SEM, using Bayesian estimation. For ESM it has several advantages over lagged <code>lmer</code> models:</p>
+<ul>
+<li><strong>latent person-mean centering</strong>, which removes Nickell’s bias and the bias in between-person effects;</li>
+<li><strong>random autoregressive and cross-lagged effects and random residual variances</strong>, so individual differences in inertia, reactivity and variability can be estimated and predicted in one model;</li>
+<li><strong>missing data and time</strong> handled within the model, including placing observations on a time grid to approximate unequal intervals;</li>
+<li><strong>measurement models</strong>: latent variables at each level, and measurement error in single indicators.</li>
+</ul>
+<p><span id="eq-dsem"><span class="math display">\[
+\begin{aligned}
+\text{Within:}\quad \text{NA}^{w}_{ti} &amp;= \phi_{i}\,\text{NA}^{w}_{t-1,i} + \beta_{i}\,\text{stress}^{w}_{ti} + \zeta_{ti}, \qquad \zeta_{ti} \sim N\!\left(0, e^{\omega_i}\right) \\
+\text{Between:}\quad (\mu_{i}, \phi_{i}, \beta_{i}, \omega_{i}) &amp;\sim \text{MVN}, \text{ each optionally regressed on } \text{neuro}_{i}
+\end{aligned}
+\tag{6.2}\]</span></span></p>
+<p><span class="math inline">\(\text{NA}^{w}\)</span> and <span class="math inline">\(\text{stress}^{w}\)</span> are deviations from each person’s latent mean <span class="math inline">\(\mu_i\)</span>. <span class="math inline">\(\phi_i\)</span> is person-specific inertia, <span class="math inline">\(\beta_i\)</span> person-specific stress reactivity, and <span class="math inline">\(\omega_i\)</span> the log innovation variance (moment-to-moment unpredictability).</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Mplus</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Mplus"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>VARIABLE:  NAMES = id day beep na stress neuro;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>           USEVARIABLES = na stress neuro;</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>           CLUSTER = id;</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>           BETWEEN = neuro;</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>           LAGGED = na(1);</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>           TINTERVAL = hour(1);    ! places observations on a time grid</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ANALYSIS:  TYPE = TWOLEVEL RANDOM;</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>           ESTIMATOR = BAYES;</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>           BITERATIONS = (5000);</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>           PROCESSORS = 2;</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>MODEL:     %WITHIN%</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>           phi | na ON na&amp;1;       ! random inertia</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>           s   | na ON stress;     ! random stress reactivity</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>           logv | na;              ! random residual variance</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>           %BETWEEN%</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>           na phi s logv ON neuro;</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>           na phi s logv WITH na phi s logv;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><span class="citation" data-cites="mcneish2020">McNeish &amp; Hamaker (<a href="08-further-reading.html#ref-mcneish2020" role="doc-biblioref">2020</a>)</span> give an accessible primer with annotated Mplus code. In R, <code>mlts</code> (multilevel latent time series models via Stan), <code>brms</code> (flexible Bayesian multilevel models, with observed centering), <code>dynr</code>, and <code>ctsem</code> <span class="citation" data-cites="driver2017">(continuous-time models, <a href="08-further-reading.html#ref-driver2017" role="doc-biblioref">Driver et al., 2017</a>)</span> cover much of the same ground. Blimp also supports latent centering and lagged effects with missing data.</p>
+</section>
+<section id="sec-var" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-var"><span class="header-section-number">6.6</span> Multilevel VAR and network models</h2>
+<p>Vector autoregressive (VAR) models extend lagged models to several variables at once: each variable at <em>t</em> is predicted by all variables at <em>t</em> − 1. The multilevel VAR in the <code>mlVAR</code> package <span class="citation" data-cites="epskamp2018">(<a href="08-further-reading.html#ref-epskamp2018" role="doc-biblioref">Epskamp et al., 2018</a>)</span> estimates three networks: a <strong>temporal</strong> network (lagged effects), a <strong>contemporaneous</strong> network (partial correlations among residuals at the same prompt), and a <strong>between-person</strong> network (partial correlations among person means).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlVAR)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fit_var <span class="ot">&lt;-</span> <span class="fu">mlVAR</span>(esm,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vars     =</span> <span class="fu">c</span>(<span class="st">"na"</span>, <span class="st">"stress"</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">idvar    =</span> <span class="st">"id"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dayvar   =</span> <span class="st">"day"</span>,     <span class="co"># no lags across days</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beepvar  =</span> <span class="st">"beep"</span>,    <span class="co"># missing beeps break lag pairs</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">lags     =</span> <span class="dv">1</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">temporal =</span> <span class="st">"correlated"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit_var, <span class="st">"temporal"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit_var, <span class="st">"contemporaneous"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Interpreting networks">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Interpreting networks
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Network models inherit every assumption of lagged regression (stationarity, equal intervals, no unmeasured confounders, reliable measures) and add a large number of parameters. Contemporaneous edges have no direction. Centrality indices are often unstable and their meaning for intervention targets is debated. Treat networks as exploratory descriptions unless the design supports stronger claims.</p>
+</div>
+</div>
+</section>
+<section id="sec-variability" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="sec-variability"><span class="header-section-number">6.7</span> Modelling variability</h2>
+<p>Sometimes the question is not about the level of a variable but about how much it fluctuates: affective instability in borderline personality disorder, for instance. Instead of computing iSD or MSSD per person and entering them into a second-stage regression (which ignores their estimation error), model variability directly. The <strong>mixed-effects location-scale model</strong> <span class="citation" data-cites="hedeker2008">(<a href="08-further-reading.html#ref-hedeker2008" role="doc-biblioref">Hedeker et al., 2008</a>)</span> gives each person their own residual variance, which can be predicted by person-level variables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fit_ls <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bf</span>(na <span class="sc">~</span> stress_cw <span class="sc">+</span> stress_pm_gc <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span>p<span class="sc">|</span> id),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     sigma <span class="sc">~</span> neuro <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span>p<span class="sc">|</span> id)),   <span class="co"># person-specific residual SD, predicted by neuroticism</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> esm, <span class="at">chains =</span> <span class="dv">4</span>, <span class="at">cores =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">2026</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># |p| lets the location and scale random effects correlate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="sec-nonnormal" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="sec-nonnormal"><span class="header-section-number">6.8</span> Non-normal outcomes</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 30%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Outcome</th>
+<th>Model</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Binary (alone yes/no, smoked since last prompt)</td>
+<td>Multilevel logistic regression</td>
+<td><code>lme4::glmer(family = binomial)</code></td>
+</tr>
+<tr class="even">
+<td>Ordinal (1–7 Likert with few used categories)</td>
+<td>Cumulative link mixed model</td>
+<td><code>ordinal::clmm</code>, <code>brms</code> (<code>cumulative</code>)</td>
+</tr>
+<tr class="odd">
+<td>Counts (cigarettes, drinks)</td>
+<td>Poisson or negative binomial mixed model</td>
+<td><code>glmmTMB</code>, <code>brms</code></td>
+</tr>
+<tr class="even">
+<td>Many zeros (symptoms usually absent)</td>
+<td>Zero-inflated or hurdle mixed model</td>
+<td><code>glmmTMB</code> (<code>ziformula</code>), <code>brms</code> (<code>hurdle_*</code>)</td>
+</tr>
+<tr class="odd">
+<td>Bounded slider with piles at 0 or 100</td>
+<td>Beta, ordered beta, or censored models</td>
+<td><code>glmmTMB</code>, <code>brms</code></td>
+</tr>
+</tbody>
+</table>
+<p>In non-linear mixed models, fixed effects are conditional on random effects (effects for a “typical” person), not population-averaged. Plot predicted values on the response scale to communicate results.</p>
+</section>
+<section id="sec-idiographic" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="sec-idiographic"><span class="header-section-number">6.9</span> Person-specific (idiographic) models</h2>
+<p>A multilevel model describes an average process and the spread around it. Whether the average describes any individual well depends on <strong>ergodicity</strong>: group-level and individual-level structures coincide only if every person follows the same stationary process, which is rarely true in psychology <span class="citation" data-cites="molenaar2004">(<a href="08-further-reading.html#ref-molenaar2004" role="doc-biblioref">Molenaar, 2004</a>)</span>. Options for person-specific analysis:</p>
+<ul>
+<li><strong>N = 1 time-series models</strong> (e.g., a VAR per person with the <code>vars</code> package). They need many observations per person, roughly equal spacing, and stationarity or explicit detrending.</li>
+<li><strong>Random effects as person-specific estimates.</strong> Best linear unbiased predictions (BLUPs; <code>ranef()</code> in lme4) borrow strength from the group and are more stable than separate per-person regressions.</li>
+<li><strong>GIMME</strong> (group iterative multiple model estimation, R package <code>gimme</code>) <span class="citation" data-cites="gates2012">(<a href="08-further-reading.html#ref-gates2012" role="doc-biblioref">Gates &amp; Molenaar, 2012</a>)</span> estimates person-specific models that share group-level paths where the data support them, and can find subgroups with similar dynamics.</li>
+<li><strong>Clustering dynamics</strong>: mixture models or clustering on person-specific parameters to find subtypes.</li>
+</ul>
+</section>
+<section id="sec-missing" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="sec-missing"><span class="header-section-number">6.10</span> Missing data</h2>
+<ul>
+<li><strong>Missing outcomes</strong>: likelihood-based multilevel models use all observed responses and are valid if data are missing at random (MAR) given the variables in the model.</li>
+<li><strong>Missing predictors</strong>, including lagged predictors, cause rows to be dropped. A missed prompt removes up to two lag pairs (<a href="05-processing.html#sec-lags" class="quarto-xref"><span>Section 5.6</span></a>). Multilevel multiple imputation (<code>mice</code> with <code>2l.*</code> methods, <code>jomo</code> with <code>mitml</code>, or Blimp) or Bayesian models that treat missing predictors as parameters (DSEM) retain them.</li>
+<li><strong>Make MAR more plausible</strong> by including variables that predict missingness (time of day, study day, weekend, previous-prompt states) as covariates or auxiliary variables.</li>
+<li><strong>Not-at-random missingness</strong> (people skip prompts <em>because</em> they feel bad at that moment) cannot be ruled out from the data. Sensitivity analyses, such as comparing results between high- and low-compliance participants or pattern-mixture approaches, show how much conclusions depend on the assumption.</li>
+</ul>
+</section>
+<section id="sec-power" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="sec-power"><span class="header-section-number">6.11</span> Sample size and power</h2>
+<p>Sample size is a design decision, set before data collection; <a href="02-design.html#sec-power-design" class="quarto-xref"><span>Section 2.5</span></a> covers <em>which</em> sample size (people versus prompts per person) matters for which kind of question. This section is the technical counterpart: how to actually estimate power for the multilevel models above. Beyond the two sample sizes, power here depends on the ICC, the size of random-slope variances, autocorrelation, and expected compliance — quantities you can only pin down once the model is specified.</p>
+<p>Closed-form formulas rarely fit ESM designs, so simulation is the standard approach. The <a href="https://github.com/ginettelafit/PowerAnalysisIL">PowerAnalysisIL</a> Shiny app <span class="citation" data-cites="lafit2021">(<a href="08-further-reading.html#ref-lafit2021" role="doc-biblioref">Lafit et al., 2021</a>)</span> performs simulation-based power analysis for common multilevel models with autocorrelation. For custom models, simulate data under plausible parameters (pilot data or published estimates), fit the planned model, and repeat:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate_esm() is in R/simulate_esm.R; prepare_esm() stands for the</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Chapter 5 processing steps wrapped in a function of your own</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>power_for <span class="ot">&lt;-</span> <span class="cf">function</span>(n_id, n_day, n_beep, <span class="at">n_sims =</span> <span class="dv">500</span>) {</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  hits <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_sims, {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    d   <span class="ot">&lt;-</span> <span class="fu">simulate_esm</span>(n_id, n_day, n_beep, <span class="at">seed =</span> <span class="cn">NULL</span>) <span class="sc">|&gt;</span>   <span class="co"># new data each time</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">prepare_esm</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(na <span class="sc">~</span> stress_cw <span class="sc">*</span> neuro <span class="sc">+</span> stress_pm_gc <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">1</span> <span class="sc">+</span> stress_cw <span class="sc">|</span> id), <span class="at">data =</span> d)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coef</span>(<span class="fu">summary</span>(fit))[<span class="st">"stress_cw:neuro"</span>, <span class="st">"Pr(&gt;|t|)"</span>] <span class="sc">&lt;</span> .<span class="dv">05</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(hits)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>designs <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">n_id =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">150</span>), <span class="at">n_day =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">14</span>), <span class="at">n_beep =</span> <span class="dv">6</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>designs<span class="sc">$</span>power <span class="ot">&lt;-</span> <span class="fu">mapply</span>(power_for, designs<span class="sc">$</span>n_id, designs<span class="sc">$</span>n_day, designs<span class="sc">$</span>n_beep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="sec-causal" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="sec-causal"><span class="header-section-number">6.12</span> From temporal precedence to causal claims</h2>
+<p>Lagged associations are tempting to read causally. Threats to that reading:</p>
+<ul>
+<li><strong>Time-varying confounders.</strong> Person-mean centering removes stable differences between people, but not a third variable that changes within a person (a bad night’s sleep increasing both stress and NA the next day).</li>
+<li><strong>The interval problem.</strong> Lagged effects depend on the time between measurements. An effect that peaks after 30 minutes may be invisible with a two-hour interval, and effects at different intervals can even differ in sign. Continuous-time models (<code>ctsem</code>) estimate the underlying process and translate it to any interval.</li>
+<li><strong>Between-person confounding in panel models.</strong> Traditional cross-lagged panel models mix stable between-person differences with within-person dynamics; the random-intercept cross-lagged panel model separates them <span class="citation" data-cites="hamaker2015">(<a href="08-further-reading.html#ref-hamaker2015" role="doc-biblioref">Hamaker et al., 2015</a>)</span>. Multilevel ILD models achieve the same separation through centering.</li>
+<li><strong>Measurement error and reverse effects</strong>, as discussed in <a href="#sec-lagged" class="quarto-xref"><span>Section 6.4</span></a>.</li>
+<li><strong>Granger causality is predictive, not causal.</strong> “X improves prediction of later Y” is compatible with many causal structures.</li>
+</ul>
+<p>The strongest designs manipulate the putative cause in daily life: micro-randomised trials, or randomised momentary interventions (<a href="02-design.html#sec-special-designs" class="quarto-xref"><span>Section 2.6</span></a>). Where manipulation is impossible, state assumptions explicitly and consider causal inference frameworks for time-varying exposures.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-asparouhov2018" class="csl-entry" role="listitem">
+Asparouhov, T., Hamaker, E. L., &amp; Muthén, B. (2018). Dynamic structural equation models. <em>Structural Equation Modeling: A Multidisciplinary Journal</em>, <em>25</em>(3), 359–388. <a href="https://doi.org/10.1080/10705511.2017.1406803">https://doi.org/10.1080/10705511.2017.1406803</a>
+</div>
+<div id="ref-driver2017" class="csl-entry" role="listitem">
+Driver, C. C., Oud, J. H. L., &amp; Voelkle, M. C. (2017). Continuous time structural equation modeling with <span>R</span> package ctsem. <em>Journal of Statistical Software</em>, <em>77</em>(5), 1–35. <a href="https://doi.org/10.18637/jss.v077.i05">https://doi.org/10.18637/jss.v077.i05</a>
+</div>
+<div id="ref-epskamp2018" class="csl-entry" role="listitem">
+Epskamp, S., Waldorp, L. J., Mõttus, R., &amp; Borsboom, D. (2018). The <span>G</span>aussian graphical model in cross-sectional and time-series data. <em>Multivariate Behavioral Research</em>, <em>53</em>(4), 453–480. <a href="https://doi.org/10.1080/00273171.2018.1454823">https://doi.org/10.1080/00273171.2018.1454823</a>
+</div>
+<div id="ref-gates2012" class="csl-entry" role="listitem">
+Gates, K. M., &amp; Molenaar, P. C. M. (2012). Group search algorithm recovers effective connectivity maps for individuals in homogeneous and heterogeneous samples. <em>NeuroImage</em>, <em>63</em>(1), 310–319. <a href="https://doi.org/10.1016/j.neuroimage.2012.06.026">https://doi.org/10.1016/j.neuroimage.2012.06.026</a>
+</div>
+<div id="ref-hamaker2015" class="csl-entry" role="listitem">
+Hamaker, E. L., Kuiper, R. M., &amp; Grasman, R. P. P. P. (2015). A critique of the cross-lagged panel model. <em>Psychological Methods</em>, <em>20</em>(1), 102–116. <a href="https://doi.org/10.1037/a0038889">https://doi.org/10.1037/a0038889</a>
+</div>
+<div id="ref-hedeker2008" class="csl-entry" role="listitem">
+Hedeker, D., Mermelstein, R. J., &amp; Demirtas, H. (2008). An application of a mixed-effects location scale model for analysis of ecological momentary assessment (<span>EMA</span>) data. <em>Biometrics</em>, <em>64</em>(2), 627–634. <a href="https://doi.org/10.1111/j.1541-0420.2007.00924.x">https://doi.org/10.1111/j.1541-0420.2007.00924.x</a>
+</div>
+<div id="ref-lafit2021" class="csl-entry" role="listitem">
+Lafit, G., Adolf, J. K., Dejonckheere, E., Myin-Germeys, I., Viechtbauer, W., &amp; Ceulemans, E. (2021). Selection of the number of participants in intensive longitudinal studies: A user-friendly shiny app and tutorial for performing power analysis in multilevel regression models that account for temporal dependencies. <em>Advances in Methods and Practices in Psychological Science</em>, <em>4</em>(1). <a href="https://doi.org/10.1177/2515245920978738">https://doi.org/10.1177/2515245920978738</a>
+</div>
+<div id="ref-mcneish2020" class="csl-entry" role="listitem">
+McNeish, D., &amp; Hamaker, E. L. (2020). A primer on two-level dynamic structural equation models for intensive longitudinal data in <span>Mplus</span>. <em>Psychological Methods</em>, <em>25</em>(5), 610–635. <a href="https://doi.org/10.1037/met0000250">https://doi.org/10.1037/met0000250</a>
+</div>
+<div id="ref-molenaar2004" class="csl-entry" role="listitem">
+Molenaar, P. C. M. (2004). A manifesto on psychology as idiographic science: Bringing the person back into scientific psychology, this time forever. <em>Measurement: Interdisciplinary Research and Perspectives</em>, <em>2</em>(4), 201–218. <a href="https://doi.org/10.1207/s15366359mea0204_1">https://doi.org/10.1207/s15366359mea0204_1</a>
+</div>
+<div id="ref-rights2019" class="csl-entry" role="listitem">
+Rights, J. D., &amp; Sterba, S. K. (2019). Quantifying explained variance in multilevel models: An integrative framework for defining <span>R</span>-squared measures. <em>Psychological Methods</em>, <em>24</em>(3), 309–338. <a href="https://doi.org/10.1037/met0000184">https://doi.org/10.1037/met0000184</a>
+</div>
+<div id="ref-schuurman2019" class="csl-entry" role="listitem">
+Schuurman, N. K., &amp; Hamaker, E. L. (2019). Measurement error and person-specific reliability in multilevel autoregressive modeling. <em>Psychological Methods</em>, <em>24</em>(1), 70–91. <a href="https://doi.org/10.1037/met0000188">https://doi.org/10.1037/met0000188</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-processing.html" class="pagination-link" aria-label="Data processing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data processing</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-further-reading.html" class="pagination-link" aria-label="Further reading and references">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Further reading and references</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

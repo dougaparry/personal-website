@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Research design – Brief Experience Sampling Primer</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-measurement.html" rel="next">
+<link href="./01-foundations.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b4a6977b0acd68cc64f20a42b22ed96d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a930c1ea56d3c89e28a32ab090513413.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-594e0f838834c2ada8935efbe523737a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a930c1ea56d3c89e28a32ab090513413.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-design.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Research design</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brief Experience Sampling Primer</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dougaparry/esm-primer" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-design.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Research design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Measurement and questionnaire design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-collection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Study setup and data collection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data processing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-further-reading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Further reading and references</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A-simulated-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simulated dataset</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./B-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-questions" id="toc-sec-questions" class="nav-link active" data-scroll-target="#sec-questions"><span class="header-section-number">2.1</span> Research questions that fit ESM</a></li>
+  <li><a href="#sec-timescale" id="toc-sec-timescale" class="nav-link" data-scroll-target="#sec-timescale"><span class="header-section-number">2.2</span> Match the design to the timescale</a></li>
+  <li><a href="#sec-schemes" id="toc-sec-schemes" class="nav-link" data-scroll-target="#sec-schemes"><span class="header-section-number">2.3</span> Sampling schemes</a>
+  <ul class="collapse">
+  <li><a href="#time-based-signal-contingent-and-interval-contingent" id="toc-time-based-signal-contingent-and-interval-contingent" class="nav-link" data-scroll-target="#time-based-signal-contingent-and-interval-contingent">Time-based (signal-contingent and interval-contingent)</a></li>
+  <li><a href="#event-based-event-contingent" id="toc-event-based-event-contingent" class="nav-link" data-scroll-target="#event-based-event-contingent">Event-based (event-contingent)</a></li>
+  <li><a href="#continuous-and-passive" id="toc-continuous-and-passive" class="nav-link" data-scroll-target="#continuous-and-passive">Continuous and passive</a></li>
+  <li><a href="#hybrid-and-adaptive-schemes" id="toc-hybrid-and-adaptive-schemes" class="nav-link" data-scroll-target="#hybrid-and-adaptive-schemes">Hybrid and adaptive schemes</a></li>
+  </ul></li>
+  <li><a href="#sec-parameters" id="toc-sec-parameters" class="nav-link" data-scroll-target="#sec-parameters"><span class="header-section-number">2.4</span> Design parameters and the burden trade-off</a></li>
+  <li><a href="#sec-power-design" id="toc-sec-power-design" class="nav-link" data-scroll-target="#sec-power-design"><span class="header-section-number">2.5</span> How big should the study be?</a></li>
+  <li><a href="#sec-special-designs" id="toc-sec-special-designs" class="nav-link" data-scroll-target="#sec-special-designs"><span class="header-section-number">2.6</span> Specialised designs</a>
+  <ul class="collapse">
+  <li><a href="#measurement-burst-designs" id="toc-measurement-burst-designs" class="nav-link" data-scroll-target="#measurement-burst-designs">Measurement-burst designs</a></li>
+  <li><a href="#ecological-momentary-interventions-and-micro-randomised-trials" id="toc-ecological-momentary-interventions-and-micro-randomised-trials" class="nav-link" data-scroll-target="#ecological-momentary-interventions-and-micro-randomised-trials">Ecological momentary interventions and micro-randomised trials</a></li>
+  <li><a href="#n-1-and-small-n-clinical-designs" id="toc-n-1-and-small-n-clinical-designs" class="nav-link" data-scroll-target="#n-1-and-small-n-clinical-designs">N = 1 and small-N clinical designs</a></li>
+  </ul></li>
+  <li><a href="#sec-prereg" id="toc-sec-prereg" class="nav-link" data-scroll-target="#sec-prereg"><span class="header-section-number">2.7</span> Preregistration</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-design" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Research design</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Design starts from the research question and the timescale of the process you care about. Sampling frequency, study length, and questionnaire content should all follow from those two things, not from what the software makes easy or what other studies have done.</p>
+<section id="sec-questions" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-questions"><span class="header-section-number">2.1</span> Research questions that fit ESM</h2>
+<p>When thinking about research questions that fit ESM it can help to name which level and which kind of effect your question is about.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Descriptive, momentary</td>
+<td>How much time do students spend alone, and how do they feel then?</td>
+</tr>
+<tr class="even">
+<td>Within-person association</td>
+<td>When people are more stressed than usual, is their negative affect higher?</td>
+</tr>
+<tr class="odd">
+<td>Between-person association</td>
+<td>Do people who are stressed on average have higher average negative affect?</td>
+</tr>
+<tr class="even">
+<td>Cross-level moderation</td>
+<td>Is the stress–affect link stronger in people high in neuroticism?</td>
+</tr>
+<tr class="odd">
+<td>Temporal (lagged)</td>
+<td>Does stress at one prompt predict affect at the next, controlling for prior affect?</td>
+</tr>
+<tr class="even">
+<td>Dynamics as individual differences</td>
+<td>Is emotional inertia higher in people with depression?</td>
+</tr>
+<tr class="odd">
+<td>Person-specific structure</td>
+<td>For this client, which symptoms precede which?</td>
+</tr>
+<tr class="even">
+<td>Intervention effect in daily life</td>
+<td>Does a prompt to take a walk reduce craving in the next hour?</td>
+</tr>
+</tbody>
+</table>
+<p>A useful exercise is to write the question as a sentence that says <em>who</em> changes and <em>relative to what</em>. For example, “when a person is more stressed <em>than their own average</em>…” is a within-person question. “People who are more stressed <em>than other people</em>…” is a between-person question. Interestingly, <span class="citation" data-cites="hamaker2012">Hamaker (<a href="08-further-reading.html#ref-hamaker2012" role="doc-biblioref">2012</a>)</span> argues that most psychological theories are implicitly about within-person questions, but most data collected tend to be at the between-person level.</p>
+</section>
+<section id="sec-timescale" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-timescale"><span class="header-section-number">2.2</span> Match the design to the timescale</h2>
+<p>Every process has a natural tempo. Affect can change within minutes; sleep quality is a nightly event; self-esteem may drift over weeks. Your sampling interval sets the lag at which you can see effects. With prompts every two hours you cannot detect a process that plays out in 20 minutes. As a general rule of thumb:</p>
+<ul>
+<li><strong>Fast-changing states</strong> (mood, craving, pain, social interaction): several prompts per day.</li>
+<li><strong>Daily events and summaries</strong> (sleep, conflict, alcohol use, daily goals): one or two diaries per day.</li>
+<li><strong>Slow processes</strong> (symptom change over treatment, adjustment to a life event): measurement-burst designs, with a week of ESM repeated every few months.</li>
+</ul>
+</section>
+<section id="sec-schemes" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-schemes"><span class="header-section-number">2.3</span> Sampling schemes</h2>
+<p><span class="citation" data-cites="wheeler1991">Wheeler &amp; Reis (<a href="08-further-reading.html#ref-wheeler1991" role="doc-biblioref">1991</a>)</span> distinguished three basic protocols by <em>what triggers a report</em>: <strong>interval-contingent</strong>, in which participants report at fixed, regular intervals; <strong>signal-contingent</strong>, in which they report when a device prompts them (at random or semi-random times); and <strong>event-contingent</strong>, in which they report whenever a designated event occurs.</p>
+<p>Time-based schemes (interval- and signal-contingent) aim to sample <em>representative</em> moments of everyday life, so they suit questions about typical states and their moment-to-moment dynamics. Event-based schemes deliberately <em>oversample</em> particular occasions, so they suit questions about specific, often rare, episodes.</p>
+<div id="fig-sampling-schemes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-schemes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="fig-svg">
+<svg viewbox="0 0 680 262" role="img" aria-label="Four sampling schemes across a day from 08:00 to 23:00: fixed interval prompts every two hours; stratified random prompts, one at a random time inside each 2 hour 15 minute block; event-contingent reports at irregular participant-initiated times; and a single evening daily diary.">
+  <g font-family="Schibsted Grotesk, Helvetica, Arial, sans-serif" fill="currentColor">
+    <!-- row guides -->
+    <g stroke="currentColor" stroke-opacity=".18" stroke-width="1">
+      <line x1="150" y1="40" x2="660" y2="40"></line><line x1="150" y1="98" x2="660" y2="98"></line>
+      <line x1="150" y1="156" x2="660" y2="156"></line><line x1="150" y1="210" x2="660" y2="210"></line>
+    </g>
+    <!-- labels -->
+    <text x="0" y="38" font-size="13" font-weight="700">Fixed interval</text>
+    <text x="0" y="54" font-size="11" fill-opacity=".65">every 2 h</text>
+    <text x="0" y="96" font-size="13" font-weight="700">Stratified random</text>
+    <text x="0" y="112" font-size="11" fill-opacity=".65">1 random prompt per block</text>
+    <text x="0" y="154" font-size="13" font-weight="700">Event-contingent</text>
+    <text x="0" y="170" font-size="11" fill-opacity=".65">participant-initiated</text>
+    <text x="0" y="208" font-size="13" font-weight="700">Daily diary</text>
+    <text x="0" y="224" font-size="11" fill-opacity=".65">once, evening</text>
+    <!-- fixed -->
+    <g fill="currentColor">
+      <circle cx="218" cy="40" r="5"></circle><circle cx="286" cy="40" r="5"></circle><circle cx="354" cy="40" r="5"></circle><circle cx="422" cy="40" r="5"></circle><circle cx="490" cy="40" r="5"></circle><circle cx="558" cy="40" r="5"></circle><circle cx="626" cy="40" r="5"></circle>
+    </g>
+    <!-- stratified blocks -->
+    <g fill="var(--within-mark)" fill-opacity=".16" stroke="var(--within-mark)" stroke-opacity=".55" stroke-width="1">
+      <rect x="184" y="86" width="76.5" height="24"></rect><rect x="260.5" y="86" width="76.5" height="24"></rect><rect x="337" y="86" width="76.5" height="24"></rect><rect x="413.5" y="86" width="76.5" height="24"></rect><rect x="490" y="86" width="76.5" height="24"></rect><rect x="566.5" y="86" width="76.5" height="24"></rect>
+    </g>
+    <g fill="var(--within-mark)">
+      <circle cx="221.4" cy="98" r="5"></circle><circle cx="282.6" cy="98" r="5"></circle><circle cx="381.2" cy="98" r="5"></circle><circle cx="432.2" cy="98" r="5"></circle><circle cx="544.4" cy="98" r="5"></circle><circle cx="595.4" cy="98" r="5"></circle>
+    </g>
+    <!-- event -->
+    <g fill="currentColor">
+      <polygon points="173.8,150 179.3,160 168.3,160"></polygon><polygon points="299.6,150 305.1,160 294.1,160"></polygon><polygon points="316.6,150 322.1,160 311.1,160"></polygon><polygon points="462.8,150 468.3,160 457.3,160"></polygon><polygon points="527.4,150 532.9,160 521.9,160"></polygon><polygon points="541,150 546.5,160 535.5,160"></polygon><polygon points="632.8,150 638.3,160 627.3,160"></polygon>
+    </g>
+    <!-- diary -->
+    <rect x="604" y="204" width="12" height="12" fill="currentColor"></rect>
+    <!-- axis -->
+    <line x1="150" y1="238" x2="660" y2="238" stroke="currentColor" stroke-width="1"></line>
+    <g stroke="currentColor" stroke-width="1">
+      <line x1="150" y1="238" x2="150" y2="243"></line><line x1="218" y1="238" x2="218" y2="243"></line><line x1="286" y1="238" x2="286" y2="243"></line><line x1="354" y1="238" x2="354" y2="243"></line><line x1="422" y1="238" x2="422" y2="243"></line><line x1="490" y1="238" x2="490" y2="243"></line><line x1="558" y1="238" x2="558" y2="243"></line><line x1="626" y1="238" x2="626" y2="243"></line>
+    </g>
+    <g font-size="11" text-anchor="middle" fill-opacity=".7">
+      <text x="150" y="256">08:00</text><text x="218" y="256">10:00</text><text x="286" y="256">12:00</text><text x="354" y="256">14:00</text><text x="422" y="256">16:00</text><text x="490" y="256">18:00</text><text x="558" y="256">20:00</text><text x="626" y="256">22:00</text>
+    </g>
+  </g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-schemes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: <strong>Four ways to schedule one day of measurement.</strong> Stratified random sampling (shaded blocks) is the most common choice for momentary states. In this approach prompts are unpredictable, but spread across the whole day.
+</figcaption>
+</figure>
+</div>
+<section id="time-based-signal-contingent-and-interval-contingent" class="level3">
+<h3 class="anchored" data-anchor-id="time-based-signal-contingent-and-interval-contingent">Time-based (signal-contingent and interval-contingent)</h3>
+<p>Here the schedule, not the participant, decides when a report happens. There are two common variants to this approach: interval-contingent approaches and signal-contingent approaches. In a meta-analysis of 477 EMA studies, signal-contingent schedules were used in 58% of studies and interval-contingent schedules in 18% <span class="citation" data-cites="wrzus2023">(<a href="08-further-reading.html#ref-wrzus2023" role="doc-biblioref">Wrzus &amp; Neubauer, 2023</a>)</span>.</p>
+<ul>
+<li><strong>Interval-contingent (fixed-interval)</strong> designs place prompts at set clock times: 10h00, 12h00, 14h00, and so on. Equal spacing is convenient because it keeps the lag between observations constant, which simplifies lagged and time-series models. The cost of this convenience, however, is predictability. Participants can anticipate a fixed schedule and, consciously or not, change their behaviour or bring a report forward, which undermines the “momentary” logic of the method.</li>
+<li><strong>Signal-contingent</strong> designs prompt at random or semi-random times, so a report cannot be anticipated. Pure random scheduling, however, can bunch several prompts into a short window and leave long gaps elsewhere. Most studies therefore use <strong>stratified (semi-)random</strong> sampling in which the waking day is divided into equal blocks (e.g., six two-hour blocks) and one prompt is placed at a random time within each block, usually with a minimum gap between consecutive prompts (e.g., 30–45 minutes).</li>
+</ul>
+</section>
+<section id="event-based-event-contingent" class="level3">
+<h3 class="anchored" data-anchor-id="event-based-event-contingent">Event-based (event-contingent)</h3>
+<p>Here the participant, not the schedule, initiates the report whenever a defined event occurs (e.g., after each social interaction lasting more than ten minutes, each cigarette, each argument, each binge episode). This approach captures rare or brief events that time-based prompts would almost always miss, and it records them close to when they happen rather than at the next scheduled beep. But there are still tradeoffs to this approach. You cannot distinguish a moment when <em>no</em> event occurred from one where an event occurred but went <strong>unreported</strong>, so compliance is harder to audit than with time-based prompts. The event definition must be very clear and easy to recognise in the moment. Self-initiated reporting can also make people more attentive to the target behaviour, a form of reactivity (<a href="03-measurement.html#sec-reactivity" class="quarto-xref"><span>Section 3.8</span></a>). Two fixes to these issues are typically used. The first involves pairing event reports with time-based prompts so you also have non-event moments for comparison. The second involves letting the software detect the event and trigger the prompt automatically (for example, a logged app-open, a completed call, or a sensor threshold), which removes the burden of remembering to self-report.</p>
+</section>
+<section id="continuous-and-passive" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-and-passive">Continuous and passive</h3>
+<p>Sensors record continuously in the background, without direct participant effort (e.g., accelerometry for movement and sleep, GPS for mobility, phone logs for screen time and communication, wearables for heart rate or skin conductance, etc.). Passive sensing lowers the participant burden and self-report bias, but it does raise issues of privacy, battery and storage. It also remains a challenge to link the passive event stream to what a moment actually <em>meant</em> to the person.</p>
+</section>
+<section id="hybrid-and-adaptive-schemes" class="level3">
+<h3 class="anchored" data-anchor-id="hybrid-and-adaptive-schemes">Hybrid and adaptive schemes</h3>
+<p>Combining schemes lets you measure processes that run at different tempos, or target specific events, within one design:</p>
+<ul>
+<li><strong>Morning and evening anchors</strong> (sleep report on waking, day summary at night) combined with random daytime prompts.</li>
+<li><strong>Sensor-triggered prompts</strong>: ask about mood when the phone detects a period of unusual inactivity or a spike in heart rate not explained by movement.</li>
+<li><strong>Planned missingness</strong>: each prompt shows a random subset of items, lowering burden while all items are still measured often enough across the study.</li>
+</ul>
+</section>
+</section>
+<section id="sec-parameters" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-parameters"><span class="header-section-number">2.4</span> Design parameters and the burden trade-off</h2>
+<p>Once the scheme is chosen, you need to decide how long to run it for, how many prompts, how many items per prompt, how far apart they should be and so on. There is no universally correct combination. The table below provides some common ranges and the main considerations.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Common range</th>
+<th>Considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Study length</td>
+<td>7–14 days (up to 30+)</td>
+<td>Include weekdays and weekends. Longer studies give more reliable person-specific estimates but more fatigue and drop-out.</td>
+</tr>
+<tr class="even">
+<td>Prompts per day</td>
+<td>3–10</td>
+<td>Set by the timescale of the process. Typical: about 6 per day for 7 days for ESM <span class="citation" data-cites="wrzus2023">(<a href="08-further-reading.html#ref-wrzus2023" role="doc-biblioref">Wrzus &amp; Neubauer, 2023</a>)</span> and 1 per day for a diary study.</td>
+</tr>
+<tr class="odd">
+<td>Items per prompt</td>
+<td>5–30</td>
+<td>Aim for under 2–3 minutes to complete. It is typical to have 5 - 15 items in an ESM survey.</td>
+</tr>
+<tr class="even">
+<td>Response window</td>
+<td>10–60 min</td>
+<td>How long a prompt stays open. Short windows keep reports momentary; long windows raise compliance but blur timing.</td>
+</tr>
+<tr class="odd">
+<td>Reminders</td>
+<td>0–2</td>
+<td>Re-notify after 5–10 min if unanswered. Helpful, but annoying if overused.</td>
+</tr>
+<tr class="even">
+<td>Sampling window</td>
+<td>e.g.&nbsp;09:00–22:00</td>
+<td>Ideally tailored to the target population’s waking hours.</td>
+</tr>
+<tr class="odd">
+<td>Minimum gap</td>
+<td>15–60 min</td>
+<td>Prevents consecutive prompts so close that they measure the same moment twice.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled" title="Rule of thumb">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Rule of thumb
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Keep the per-prompt questionnaire short and focused on your primary question. It is usually better to add a few more prompts than to add more items per prompt. If you need many constructs, consider planned missingness or a separate morning/evening questionnaire for slower-changing variables.</p>
+</div>
+</div>
+</section>
+<section id="sec-power-design" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-power-design"><span class="header-section-number">2.5</span> How big should the study be?</h2>
+<p>Sample size in ESM is a function of <em>two</em> numbers: how many <strong>people</strong> you recruit, and how many <strong>prompts</strong> each person answers.</p>
+<ul>
+<li><strong>More prompts per person</strong> increases precision <em>within</em> a person. Within-person associations (does <em>this</em> person’s affect rise <em>when</em> they are more stressed than usual?) and person-specific dynamics (one participant’s inertia or variability) are powered mainly by the number of observations per person. Within-person effects are often well powered with only a moderate number of people, because each person contributes many observations.</li>
+<li><strong>More people</strong> increases precision <em>between</em> persons. Between-person associations, and cross-level moderation (is the stress–affect link stronger in people high in neuroticism?), depend mainly on the number of participants; once each person has a reasonable number of prompts, adding more prompts helps these effects very little.</li>
+<li><strong>Plan for the prompts you will actually get.</strong> Power depends on the <em>answered</em> prompts, not the scheduled ones, so multiply your design by an expected compliance rate (compliance averages around 80%; <span class="citation" data-cites="wrzus2023">Wrzus &amp; Neubauer (<a href="08-further-reading.html#ref-wrzus2023" role="doc-biblioref">2023</a>)</span>) before judging whether it is enough.</li>
+</ul>
+<p>Because closed-form power formulas rarely fit the models ESM studies use, the standard approach is <em>simulation</em> in which you generate data under plausible assumptions, fit the model you plan to run, and repeat many times to see how often it recovers the effect. Later in this primer after introducing multilevel models in <a href="06-analysis.html" class="quarto-xref"><span>Chapter 6</span></a>, a worked example of this simulation-based approach is presented in <a href="06-analysis.html#sec-power" class="quarto-xref"><span>Section 6.11</span></a>.</p>
+</section>
+<section id="sec-special-designs" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-special-designs"><span class="header-section-number">2.6</span> Specialised designs</h2>
+<section id="measurement-burst-designs" class="level3">
+<h3 class="anchored" data-anchor-id="measurement-burst-designs">Measurement-burst designs</h3>
+<p>Intensive “bursts” (e.g., 7 days of ESM) are repeated at wider intervals (e.g., every three months). They connect short-term dynamics to long-term change. For example, does emotional reactivity to stress decrease over a course of therapy?</p>
+</section>
+<section id="ecological-momentary-interventions-and-micro-randomised-trials" class="level3">
+<h3 class="anchored" data-anchor-id="ecological-momentary-interventions-and-micro-randomised-trials">Ecological momentary interventions and micro-randomised trials</h3>
+<p>Ecological momentary interventions deliver support in daily life. A <strong>just-in-time adaptive intervention</strong> (JITAI) decides when to intervene based on momentary data <span class="citation" data-cites="nahumshani2018">(<a href="08-further-reading.html#ref-nahumshani2018" role="doc-biblioref">Nahum-Shani et al., 2018</a>)</span>. The <strong>micro-randomised trial</strong> <span class="citation" data-cites="klasnja2015">(<a href="08-further-reading.html#ref-klasnja2015" role="doc-biblioref">Klasnja et al., 2015</a>)</span> randomises, at each decision point, whether a person receives an intervention prompt. Because treatment is randomised within person many times, it gives unconfounded estimates of proximal (short-term) effects and how they change over time.</p>
+</section>
+<section id="n-1-and-small-n-clinical-designs" class="level3">
+<h3 class="anchored" data-anchor-id="n-1-and-small-n-clinical-designs">N = 1 and small-N clinical designs</h3>
+<p>If the aim is to describe one person, you need many more observations from that person (often 50–100+ per variable) and roughly equal spacing. Group size matters less.</p>
+</section>
+</section>
+<section id="sec-prereg" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-prereg"><span class="header-section-number">2.7</span> Preregistration</h2>
+<p>ESM studies carry an unusually large number of “researcher degrees of freedom”– which prompts count as valid, which compliance cut-off to apply, whether to lag across nights, how to centre predictors, which random effects to include, what to do when a model will not converge. Making these decisions <em>after</em> seeing the data, even in good faith, inflates false positives and makes confirmatory claims hard to trust. Preregistration — writing the decisions down and time-stamping them before you look — is the main safeguard against p-hacking and HARKing.</p>
+<p>General-purpose preregistration templates were not built with intensive longitudinal data in mind, and leave out much of what makes an ESM study reproducible. <span class="citation" data-cites="kirtley2021">Kirtley et al. (<a href="08-further-reading.html#ref-kirtley2021" role="doc-biblioref">2021</a>)</span> fill that gap with a template and tutorial designed specifically for ESM; it adapts the general OSF preregistration template and is freely available at <a href="https://osf.io/2chmu/">osf.io/2chmu</a>. The paper walks through each field with worked examples. A good ESM registration covers the sampling scheme, the items (with exact wording and response scales), planned exclusions and compliance criteria, the preprocessing pipeline, the models (random-effects structure, centering, and a convergence fallback), and the power rationale.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-hamaker2012" class="csl-entry" role="listitem">
+Hamaker, E. L. (2012). Why researchers should think <span>“within-person”</span>: A paradigmatic rationale. In M. R. Mehl &amp; T. S. Conner (Eds.), <em>Handbook of research methods for studying daily life</em> (pp. 43–61). Guilford Press.
+</div>
+<div id="ref-kirtley2021" class="csl-entry" role="listitem">
+Kirtley, O. J., Lafit, G., Achterhof, R., Hiekkaranta, A. P., &amp; Myin-Germeys, I. (2021). Making the black box transparent: A template and tutorial for registration of studies using experience-sampling methods. <em>Advances in Methods and Practices in Psychological Science</em>, <em>4</em>(1). <a href="https://doi.org/10.1177/2515245920924686">https://doi.org/10.1177/2515245920924686</a>
+</div>
+<div id="ref-klasnja2015" class="csl-entry" role="listitem">
+Klasnja, P., Hekler, E. B., Shiffman, S., Boruvka, A., Almirall, D., Tewari, A., &amp; Murphy, S. A. (2015). Microrandomized trials: An experimental design for developing just-in-time adaptive interventions. <em>Health Psychology</em>, <em>34</em>(Suppl.), 1220–1228. <a href="https://doi.org/10.1037/hea0000305">https://doi.org/10.1037/hea0000305</a>
+</div>
+<div id="ref-nahumshani2018" class="csl-entry" role="listitem">
+Nahum-Shani, I., Smith, S. N., Spring, B. J., Collins, L. M., Witkiewitz, K., Tewari, A., &amp; Murphy, S. A. (2018). Just-in-time adaptive interventions (<span>JITAIs</span>) in mobile health: Key components and design principles for ongoing health behavior support. <em>Annals of Behavioral Medicine</em>, <em>52</em>(6), 446–462. <a href="https://doi.org/10.1007/s12160-016-9830-8">https://doi.org/10.1007/s12160-016-9830-8</a>
+</div>
+<div id="ref-wheeler1991" class="csl-entry" role="listitem">
+Wheeler, L., &amp; Reis, H. T. (1991). Self-recording of everyday life events: Origins, types, and uses. <em>Journal of Personality</em>, <em>59</em>(3), 339–354. <a href="https://doi.org/10.1111/j.1467-6494.1991.tb00252.x">https://doi.org/10.1111/j.1467-6494.1991.tb00252.x</a>
+</div>
+<div id="ref-wrzus2023" class="csl-entry" role="listitem">
+Wrzus, C., &amp; Neubauer, A. B. (2023). Ecological momentary assessment: A meta-analysis on designs, samples, and compliance across research fields. <em>Assessment</em>, <em>30</em>(3), 825–846. <a href="https://doi.org/10.1177/10731911211067538">https://doi.org/10.1177/10731911211067538</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-foundations.html" class="pagination-link" aria-label="Foundations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Foundations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-measurement.html" class="pagination-link" aria-label="Measurement and questionnaire design">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Measurement and questionnaire design</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
